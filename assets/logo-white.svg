@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" width="320" height="60" fill="none">
+  <!-- Ícone Monograma / Precisão Industrial -->
+  <g transform="translate(10, 8)">
+    <rect x="0" y="0" width="44" height="44" rx="3" fill="#FFB800" />
+    <path d="M12 12 H32 V18 H26 V32 H18 V18 H12 Z" fill="#0A0E13" />
+    <circle cx="30" cy="14" r="3" fill="#FFFFFF" />
+    <path d="M6 38 L38 38" stroke="#0A0E13" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+  <!-- Texto TEKMAK -->
+  <text x="68" y="36" font-family="'Roboto', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="28" letter-spacing="0.06em" fill="#FFFFFF">TEK<tspan fill="#FFB800">MAK</tspan></text>
+  <!-- Subtítulo DO BRASIL -->
+  <text x="70" y="49" font-family="'Roboto Condensed', Arial, sans-serif" font-weight="700" font-size="9.5" letter-spacing="0.32em" fill="#9DA3AF">DO BRASIL · MÁQUINAS INDUSTRIAIS</text>
+</svg>

@@ -1,0 +1,288 @@
+{
+  "fps": 24,
+  "duration": 42,
+  "prepareEnds": 7,
+  "inkLoaded": 6,
+  "printStarts": 7,
+  "printProgress": 8,
+  "whiteStarts": 12,
+  "powderStarts": 14.2,
+  "cureStarts": 16,
+  "colorChoice": 20,
+  "shirtArrives": 20.1,
+  "prepressStarts": 23.9,
+  "filmPlaced": 28,
+  "trayEnters": 30.25,
+  "pressCloses": 30.9,
+  "printAppears": 33.85,
+  "pressOpens": 33.85,
+  "trayExits": 35.35,
+  "filmPeels": 35.8,
+  "peelEnds": 38.4,
+  "revealStarts": 39.5,
+  "revealEnds": 40.1,
+  "shirt": "CAMISETA_ANIMADA",
+  "press": "TEKMAK_PRENSA_INDUSTRIAL_FRENTE_VERSO",
+  "printer": "IMPRESSORA_TK3002I_DTF",
+  "film": "FILME_TRANSFER_DTF",
+  "filmArtwork": "ARTE_USUARIO_NO_FILME",
+  "filmWhite": "BRANCO_SOBRE_A_ARTE",
+  "resultTarget": [
+    0,
+    1.2,
+    1.55
+  ],
+  "shots": [
+    {
+      "time": 0,
+      "position": [
+        -1.45,
+        2.5,
+        3.45
+      ],
+      "target": [
+        -2.4,
+        1.1,
+        0.05
+      ]
+    },
+    {
+      "time": 0.8,
+      "position": [
+        -2.02,
+        2.27,
+        1.02
+      ],
+      "target": [
+        -2.65,
+        1.85,
+        -0.19
+      ]
+    },
+    {
+      "time": 5.1,
+      "position": [
+        -2.02,
+        2.27,
+        1.02
+      ],
+      "target": [
+        -2.65,
+        1.85,
+        -0.19
+      ]
+    },
+    {
+      "time": 6.5,
+      "position": [
+        -1.4,
+        2.45,
+        3.3
+      ],
+      "target": [
+        -2.4,
+        1.04,
+        0.4
+      ]
+    },
+    {
+      "time": 7.5,
+      "position": [
+        -1.68,
+        1.78,
+        1.35
+      ],
+      "target": [
+        -2.33,
+        1.22,
+        0.05
+      ]
+    },
+    {
+      "time": 13.8,
+      "position": [
+        -1.72,
+        1.73,
+        1.3
+      ],
+      "target": [
+        -2.33,
+        1.19,
+        0.07
+      ]
+    },
+    {
+      "time": 15.2,
+      "position": [
+        -1.75,
+        1.45,
+        1.2
+      ],
+      "target": [
+        -2.33,
+        1.02,
+        0.32
+      ]
+    },
+    {
+      "time": 17,
+      "position": [
+        -1.38,
+        1.43,
+        2.38
+      ],
+      "target": [
+        -2.33,
+        0.72,
+        0.95
+      ]
+    },
+    {
+      "time": 20,
+      "position": [
+        -1.45,
+        1.42,
+        2.48
+      ],
+      "target": [
+        -2.33,
+        0.73,
+        1.16
+      ]
+    },
+    {
+      "time": 20.1,
+      "position": [
+        1.65,
+        2.55,
+        2.6
+      ],
+      "target": [
+        0,
+        0.91,
+        0.38
+      ]
+    },
+    {
+      "time": 27,
+      "position": [
+        0.6,
+        2.3,
+        1.8
+      ],
+      "target": [
+        0,
+        0.95,
+        0.66
+      ]
+    },
+    {
+      "time": 29,
+      "position": [
+        0.6,
+        2.3,
+        1.8
+      ],
+      "target": [
+        0,
+        0.95,
+        0.66
+      ]
+    },
+    {
+      "time": 30.2,
+      "position": [
+        1.15,
+        1.45,
+        1.9
+      ],
+      "target": [
+        0,
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "time": 34,
+      "position": [
+        1.15,
+        1.45,
+        1.9
+      ],
+      "target": [
+        0,
+        1.0,
+        0.05
+      ]
+    },
+    {
+      "time": 35.8,
+      "position": [
+        0.24,
+        1.68,
+        1.64
+      ],
+      "target": [
+        0,
+        0.95,
+        0.64
+      ]
+    },
+    {
+      "time": 38.8,
+      "position": [
+        0.24,
+        1.68,
+        1.64
+      ],
+      "target": [
+        0,
+        0.95,
+        0.64
+      ]
+    },
+    {
+      "time": 39.5,
+      "position": [
+        0.24,
+        1.68,
+        1.64
+      ],
+      "target": [
+        0,
+        0.95,
+        0.64
+      ]
+    },
+    {
+      "time": 39.6,
+      "position": [
+        0,
+        1.2,
+        2.98
+      ],
+      "target": [
+        0,
+        1.2,
+        1.55
+      ]
+    },
+    {
+      "time": 42,
+      "position": [
+        0,
+        1.2,
+        2.98
+      ],
+      "target": [
+        0,
+        1.2,
+        1.55
+      ]
+    }
+  ],
+  "sources": [
+    "https://www.rolanddg.eu/blog/what-is-direct-to-film-printing"
+  ],
+  "note": "Demonstração DTF com tempos condensados. Ajustes térmicos dependem de filme, pó e tecido. Abastecimento e posicionamento são operações manuais."
+}

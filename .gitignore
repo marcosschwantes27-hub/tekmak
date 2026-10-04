@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment & Sensitive
+.env
+.env.*
+auth_baileys/
+data_crm/
+
+# Logs & temp staging
+.local-logs/
+.vercel-staging/
+scratch/
+video_review/
+__pycache__/
+*.log
+
+# Temporary test crops and previews in root
+bottle_*.png
+bottles_area.png
+crop_*.png
+card*.png
+paper_*.png
+radio*.png
+badge_check.png
+assistance-preview.png
+assistance-temp.png
+
+# OS metadata
+.DS_Store
+Thumbs.db

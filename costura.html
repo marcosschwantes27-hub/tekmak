@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Máquinas de Costura Sun Special | Tekmak do Brasil</title>
+  <meta name="description" content="Linha completa de máquinas de costura industriais Sun Special na Tekmak do Brasil: Retas Direct Drive, Overloques, Galoneiras e Bordadeiras com assistência técnica especializada." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg?v=20261004_k" />
+
+  <style>
+    /* ============================================================
+       TEKMAK DO BRASIL · Identidade Visual Oficial
+       ============================================================ */
+    @font-face {
+      font-family: 'RBNo3.1';
+      src: url('assets/fonts/RBNo3.1-UltraItalic.woff2') format('woff2');
+      font-weight: 700 900;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'RBNo3.1';
+      src: url('assets/fonts/RBNo3.1-UltraItalic.woff2') format('woff2');
+      font-weight: 700 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #0a0e13;
+      --graphite: #2b2d31;
+      --navy: #141f2d;
+      --gold: #ffb300;
+      --gold-hover: #e5a100;
+      --gold-dark: #cc8f00;
+      --paper: #ffffff;
+      --mist: #f5f5f4;
+      --line: #e2e8f0;
+      --line-strong: #cbd5e1;
+      --muted: #64748b;
+      --r: 3px;
+      --maxw: 1200px;
+      --ease: cubic-bezier(.22,.61,.36,1);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    body {
+      font-family:'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      color:var(--ink);
+      background:#ffffff;
+      line-height:1.55;
+      font-weight:400;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    img { display:block; max-width:100%; height:auto; }
+    a { color:inherit; text-decoration:none; }
+    button { font-family:inherit; cursor:pointer; border:none; background:none; }
+    ::selection { background:var(--gold); color:#0a0e13; }
+
+    /* Layout Shell */
+    .tek-shell {
+      width:min(1200px, calc(100% - 64px));
+      margin:0 auto;
+    }
+
+    /* =====================================================
+       NAV (CABEÇALHO OFICIAL #070A0E)
+       ===================================================== */
+    .nav {
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:100;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:72px;
+      padding:0 clamp(20px, 4vw, 64px);
+      background:#070a0e !important;
+      border-bottom:1px solid rgba(255, 255, 255, 0.09) !important;
+      box-shadow:0 4px 24px rgba(0, 0, 0, 0.45) !important;
+      box-sizing:border-box;
+    }
+    .nav-brand {
+      display:flex;
+      align-items:center;
+      flex-shrink:0;
+    }
+    .nav-logo {
+      height:34px;
+    }
+    .nav-right {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex:1;
+      margin-left:clamp(20px, 3.2vw, 48px);
+    }
+    .nav-links {
+      display:inline-flex;
+      align-items:center;
+      gap:clamp(18px, 2vw, 32px);
+      margin:0 auto;
+    }
+    .nav-links a {
+      font-family:'Montserrat', sans-serif;
+      font-size:clamp(.74rem, .84vw, .82rem);
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      color:rgba(255, 255, 255, .80);
+      font-weight:600;
+      padding:9px 0 7px;
+      border-bottom:2px solid transparent;
+      transition:color .22s var(--ease), border-color .22s var(--ease);
+      white-space:nowrap;
+    }
+    .nav-links a:hover {
+      color:#FFB800;
+    }
+    .nav-links a.is-active {
+      color:#FFB800;
+      border-bottom-color:#FFB800;
+      font-weight:700;
+    }
+    .nav-cta {
+      display:flex;
+      align-items:center;
+      flex-shrink:0;
+      margin-left:auto;
+    }
+    .nav-cta .btn {
+      padding:10px 22px;
+      font-size:.84rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      border-radius:0;
+      background:#FFB800;
+      color:#0A0D12;
+      white-space:nowrap;
+      box-shadow:0 4px 14px rgba(255, 184, 0, 0.25);
+      transition:all .25s var(--ease);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+    }
+    .nav-cta .btn:hover {
+      background:#ffa000;
+      transform:translateY(-1px);
+    }
+    .nav-burger {
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      width:38px;
+      height:38px;
+      padding:4px;
+      margin-left:14px;
+      cursor:pointer;
+    }
+    .nav-burger span {
+      display:block;
+      width:100%;
+      height:2px;
+      background:#fff;
+      transition:all .25s;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position:fixed;
+      inset:0;
+      z-index:999;
+      background:#0d0f12;
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:16px;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .35s var(--ease);
+    }
+    .mobile-menu.open {
+      opacity:1;
+      pointer-events:auto;
+    }
+    .mobile-menu a {
+      font-size:1.4rem;
+      font-weight:400;
+      letter-spacing:-.02em;
+      padding:8px;
+      color:#fff;
+    }
+    .mobile-menu a.is-active {
+      color:#FFB800;
+      font-weight:700;
+    }
+    .mobile-close {
+      position:absolute;
+      top:20px;
+      right:20px;
+      font-size:2.2rem;
+      color:#fff;
+      width:44px;
+      height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links { display:none; }
+      .nav-burger { display:flex; }
+    }
+
+    /* =====================================================
+       SEÇÃO COSTURA INDUSTRIAL SUN SPECIAL (MOCKUP EDITORIAL)
+       ===================================================== */
+    .tek-sewing-page {
+      padding-top:118px;
+      padding-bottom:clamp(70px, 8vw, 110px);
+      background:#ffffff;
+    }
+
+    .sewing-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+    }
+    .sewing-kicker-bar {
+      width:36px;
+      height:4px;
+      background:#f59e0b;
+      border-radius:1px;
+    }
+    .sewing-kicker-text {
+      font-family:'Roboto', sans-serif;
+      font-size:0.75rem;
+      font-weight:700;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      color:#475569;
+    }
+    .sewing-heading {
+      margin:0;
+      font-size:clamp(1.9rem, 3.4vw, 2.9rem);
+      font-weight:300;
+      line-height:1.18;
+      letter-spacing:-0.03em;
+      color:#0f172a;
+      max-width:32ch;
+    }
+    .sewing-heading strong {
+      font-weight:700;
+      color:#0f172a;
+    }
+    .sewing-heading .sewing-highlight {
+      font-weight:700;
+      color:#d97706;
+    }
+    .sewing-subheading {
+      margin-top:14px;
+      color:#64748b;
+      font-size:clamp(1rem, 1.35vw, 1.15rem);
+      line-height:1.5;
+      font-weight:400;
+    }
+
+    /* Tabs / Filtros */
+    .sewing-tabs {
+      display:flex;
+      gap:32px;
+      border-bottom:1px solid #e5e7eb;
+      margin:38px 0 32px;
+      overflow-x:auto;
+      scrollbar-width:none;
+    }
+    .sewing-tabs::-webkit-scrollbar { display:none; }
+    .sewing-tab {
+      position:relative;
+      padding:0 0 14px;
+      background:none;
+      border:none;
+      color:#475569;
+      font-family:inherit;
+      font-size:0.95rem;
+      font-weight:500;
+      cursor:pointer;
+      white-space:nowrap;
+      transition:color 0.2s;
+    }
+    .sewing-tab:hover {
+      color:#0f172a;
+    }
+    .sewing-tab.is-selected {
+      color:#0f172a;
+      font-weight:700;
+    }
+    .sewing-tab.is-selected::after {
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-1px;
+      width:100%;
+      height:3px;
+      background:#f59e0b;
+    }
+
+    /* Grid de Máquinas */
+    .sewing-grid {
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:20px;
+    }
+    .sewing-card {
+      background:#ffffff;
+      border:1px solid #e5e7eb;
+      border-radius:2px;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      transition:transform 0.25s var(--ease), border-color 0.25s, box-shadow 0.25s;
+    }
+    .sewing-card:hover {
+      transform:translateY(-4px);
+      border-color:#cbd5e1;
+      box-shadow:0 12px 28px -8px rgba(0, 0, 0, 0.08);
+    }
+    .sewing-card.is-filtered {
+      display:none !important;
+    }
+    .sewing-card-media {
+      height:270px;
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 20px 10px;
+      overflow:hidden;
+    }
+    .sewing-card-media img {
+      max-width:100%;
+      max-height:100%;
+      object-fit:contain;
+      transition:transform 0.4s var(--ease);
+    }
+    .sewing-card:hover .sewing-card-media img {
+      transform:scale(1.04);
+    }
+    .sewing-card-body {
+      padding:16px 24px 24px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+    .sewing-card-cat {
+      font-family:'Roboto', sans-serif;
+      font-size:0.72rem;
+      font-weight:700;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:#64748b;
+      margin-bottom:6px;
+    }
+    .sewing-card-title {
+      font-size:1.24rem;
+      font-weight:700;
+      color:#0f172a;
+      line-height:1.25;
+      margin-bottom:6px;
+      letter-spacing:-0.015em;
+    }
+    .sewing-card-desc {
+      font-size:0.92rem;
+      color:#64748b;
+      line-height:1.45;
+      margin-bottom:22px;
+      flex:1;
+    }
+    .sewing-card-link {
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      font-size:0.88rem;
+      font-weight:600;
+      color:#0f172a;
+      text-decoration:underline;
+      text-decoration-thickness:1.5px;
+      text-underline-offset:4px;
+      cursor:pointer;
+      background:none;
+      border:none;
+      padding:0;
+      font-family:inherit;
+      width:fit-content;
+      transition:color 0.2s, text-decoration-color 0.2s;
+    }
+    .sewing-card-link:hover {
+      color:#d97706;
+      text-decoration-color:#d97706;
+    }
+    .sewing-card-link svg {
+      width:13px;
+      height:13px;
+      stroke:currentColor;
+      stroke-width:2.2;
+      fill:none;
+      transition:transform 0.2s;
+    }
+    .sewing-card-link:hover svg {
+      transform:translate(2px, -2px);
+    }
+
+    /* Faixa Inferior de Dúvida / Especialista */
+    .sewing-help-bar {
+      margin-top:36px;
+      padding:20px 28px;
+      background:#ffffff;
+      border:1px solid #e2e8f0;
+      border-radius:2px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .sewing-help-left {
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+    .sewing-help-icon {
+      width:32px;
+      height:32px;
+      flex-shrink:0;
+      color:#0f172a;
+    }
+    .sewing-help-icon svg {
+      width:100%;
+      height:100%;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.7;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .sewing-help-divider {
+      width:1px;
+      height:34px;
+      background:#e2e8f0;
+      flex-shrink:0;
+    }
+    .sewing-help-text h4 {
+      font-size:1rem;
+      font-weight:700;
+      color:#0f172a;
+      margin-bottom:2px;
+    }
+    .sewing-help-text p {
+      font-size:0.88rem;
+      color:#64748b;
+    }
+    .sewing-help-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 22px;
+      background:#0a0e13;
+      color:#ffffff;
+      font-size:0.86rem;
+      font-weight:600;
+      border-radius:2px;
+      text-decoration:none;
+      white-space:nowrap;
+      flex-shrink:0;
+      transition:background 0.2s, transform 0.2s;
+    }
+    .sewing-help-btn:hover {
+      background:#1e293b;
+      transform:translateY(-1px);
+    }
+    .sewing-help-btn svg {
+      width:13px;
+      height:13px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:2.2;
+    }
+
+    @media (max-width: 1150px) {
+      .sewing-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      .sewing-grid { grid-template-columns:1fr; }
+      .sewing-help-bar { flex-direction:column; align-items:flex-start; gap:18px; }
+      .sewing-help-btn { width:100%; justify-content:center; }
+    }
+
+    /* =====================================================
+       ASSISTÊNCIA TÉCNICA
+       ===================================================== */
+    .tek-assistance {
+      padding:clamp(90px, 10vw, 140px) 0;
+      background:#070a0e;
+      color:#fff;
+      isolation:isolate;
+      overflow:hidden;
+    }
+    .tek-assistance-grid {
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) minmax(0, 1.15fr);
+      gap:clamp(24px, 3.5vw, 48px);
+      align-items:center;
+    }
+    .tek-assistance-copy {
+      max-width:520px;
+    }
+    .tek-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--gold);
+      font-family:'Roboto Condensed', sans-serif;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.20em;
+      text-transform:uppercase;
+    }
+    .tek-kicker::before {
+      content:"";
+      width:22px;
+      height:2px;
+      background:currentColor;
+    }
+    .tek-assistance .tek-heading {
+      max-width:none;
+      margin-top:22px;
+      color:#fff;
+      font-size:clamp(3.1rem, 4.8vw, 4.5rem);
+      font-weight:300;
+      line-height:.98;
+      letter-spacing:-.035em;
+    }
+    .tek-assistance .tek-heading span {
+      display:block;
+      white-space:nowrap;
+    }
+    .tek-assistance .tek-heading strong {
+      display:block;
+      margin-top:3px;
+      color:#fff;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .tek-assistance .tek-copy {
+      max-width:48ch;
+      margin-top:18px;
+      color:rgba(245, 247, 250, .85);
+      font-size:1.03rem;
+      line-height:1.55;
+    }
+    .tek-assistance-facts {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      margin-top:25px;
+    }
+    .tek-assistance-fact {
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      min-width:0;
+      padding-right:18px;
+    }
+    .tek-assistance-fact + .tek-assistance-fact {
+      border-left:1px solid rgba(255, 255, 255, .24);
+      padding-left:18px;
+      padding-right:0;
+    }
+    .tek-assistance-fact svg {
+      flex:none;
+      width:32px;
+      height:32px;
+      color:var(--gold);
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.65;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .tek-assistance-fact strong {
+      display:block;
+      color:#fff;
+      font-size:.82rem;
+      line-height:1.25;
+    }
+    .tek-assistance-fact p {
+      margin-top:5px;
+      color:rgba(245, 247, 250, .76);
+      font-size:.72rem;
+      line-height:1.4;
+    }
+    .tek-assistance .tek-cta {
+      display:inline-flex;
+      gap:14px;
+      justify-content:space-between;
+      min-width:330px;
+      margin-top:27px;
+      padding:12px 20px;
+      border-radius:999px;
+      background:var(--gold);
+      color:#080b0f;
+      font-size:.83rem;
+      font-weight:800;
+      box-shadow:0 11px 30px rgba(255, 179, 0, .16);
+      align-items:center;
+      transition:background .25s, transform .25s;
+    }
+    .tek-assistance .tek-cta:hover {
+      background:#ffc229;
+      transform:translateY(-2px);
+    }
+    .tek-assistance .tek-cta svg {
+      width:23px;
+      height:23px;
+      flex:none;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .tek-assistance .tek-cta svg:last-child {
+      width:17px;
+      height:17px;
+    }
+    .tek-assistance-orbit {
+      position:relative;
+      min-width:0;
+      display:flex;
+      justify-content:center;
+    }
+    .tek-assistance-fallback {
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
+      padding:30px 20px;
+      list-style:none;
+      color:#fff;
+    }
+    .tek-assistance-fallback li {
+      padding:12px;
+      border:1px solid rgba(255, 179, 0, .3);
+      font-size:0.85rem;
+    }
+
+    @media (max-width: 1100px) {
+      .tek-assistance .tek-heading { font-size:clamp(2.8rem, 5vw, 4rem); }
+      .tek-assistance-facts { gap:12px; }
+      .tek-assistance-fact { padding-right:10px; }
+      .tek-assistance-fact + .tek-assistance-fact { padding-left:12px; }
+    }
+    @media (max-width: 950px) {
+      .tek-assistance { padding:78px 0 66px; }
+      .tek-assistance-grid { grid-template-columns:1fr; gap:24px; }
+      .tek-assistance-copy { max-width:100%; }
+      .tek-assistance-orbit { width:100%; justify-content:center; }
+    }
+    @media (max-width: 520px) {
+      .tek-assistance { padding:70px 0 50px; }
+      .tek-assistance .tek-heading { font-size:clamp(2.6rem, 11.3vw, 3.5rem); }
+      .tek-assistance .tek-heading span, .tek-assistance .tek-heading strong { white-space:normal; }
+      .tek-assistance-facts { grid-template-columns:1fr; gap:16px; margin-top:26px; }
+      .tek-assistance-fact + .tek-assistance-fact { border-left:0; padding:0; }
+      .tek-assistance .tek-cta { width:100%; min-width:0; }
+      .tek-assistance-fallback { grid-template-columns:1fr; }
+    }
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+    .tek-footer {
+      padding:44px 0 36px;
+      background:#070a0e;
+      color:rgba(255, 255, 255, .7);
+      border-top:1px solid rgba(255, 255, 255, .08);
+      font-size:.85rem;
+    }
+    .tek-footer-row {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .tek-footer-logo {
+      height:28px;
+    }
+    .tek-footer-links {
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+    .tek-footer-links a {
+      color:rgba(255, 255, 255, .75);
+      font-size:.82rem;
+      transition:color .2s;
+    }
+    .tek-footer-links a:hover {
+      color:#FFB800;
+    }
+    .tek-footer-note {
+      font-size:.78rem;
+      color:rgba(255, 255, 255, .4);
+    }
+
+    /* =====================================================
+       MODAL QUICK-VIEW (FICHA TÉCNICA)
+       ===================================================== */
+    .sc-quickview-modal {
+      position:fixed;
+      inset:0;
+      z-index:10000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:all .25s ease;
+    }
+    .sc-quickview-modal.is-open {
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+    .sc-quickview-backdrop {
+      position:absolute;
+      inset:0;
+      background:rgba(15, 23, 42, 0.65);
+      backdrop-filter:blur(6px);
+      -webkit-backdrop-filter:blur(6px);
+    }
+    .sc-quickview-dialog {
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:840px;
+      max-height:90vh;
+      overflow-y:auto;
+      background:#FFFFFF;
+      border-radius:20px;
+      box-shadow:0 24px 60px rgba(15, 23, 42, 0.25);
+      padding:clamp(24px, 4vw, 36px);
+    }
+    .sc-quickview-close {
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      background:#F1F5F9;
+      border:none;
+      font-size:24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      color:#475569;
+      transition:all .2s ease;
+    }
+    .sc-quickview-close:hover {
+      background:#E52427;
+      color:#FFFFFF;
+    }
+
+    .sc-qv-grid {
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:28px;
+      align-items:start;
+      margin-top:10px;
+    }
+    .sc-qv-media {
+      background:radial-gradient(circle at center, #FFFFFF 30%, #F1F5F9 100%);
+      border-radius:16px;
+      border:1px solid #E2E8F0;
+      padding:24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:280px;
+    }
+    .sc-qv-media img {
+      max-width:100%;
+      max-height:260px;
+      object-fit:contain;
+      filter:drop-shadow(0 12px 24px rgba(15, 23, 42, 0.12));
+    }
+    .sc-qv-info {
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .sc-qv-header {
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .sc-qv-tag {
+      font-family:'Montserrat', sans-serif;
+      font-size:0.68rem;
+      font-weight:800;
+      color:#E52427;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+    }
+    .sc-qv-title {
+      font-family:'Montserrat', sans-serif;
+      font-size:1.45rem;
+      font-weight:900;
+      color:#0F172A;
+      margin:0;
+      line-height:1.2;
+    }
+    .sc-qv-model {
+      font-family:'Montserrat', sans-serif;
+      font-size:0.85rem;
+      font-weight:700;
+      color:#64748B;
+    }
+    .sc-qv-desc {
+      font-family:'Montserrat', sans-serif;
+      font-size:0.82rem;
+      color:#334155;
+      line-height:1.6;
+      margin:0;
+    }
+    .sc-qv-specs-table {
+      width:100%;
+      border-collapse:collapse;
+      font-family:'Montserrat', sans-serif;
+      font-size:0.75rem;
+      background:#F8FAFC;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid #E2E8F0;
+    }
+    .sc-qv-specs-table tr {
+      border-bottom:1px solid #E2E8F0;
+    }
+    .sc-qv-specs-table tr:last-child {
+      border-bottom:none;
+    }
+    .sc-qv-specs-table td {
+      padding:8px 12px;
+    }
+    .sc-qv-specs-table td.k {
+      font-weight:700;
+      color:#64748B;
+      width:40%;
+      background:rgba(241, 245, 249, 0.6);
+      text-transform:uppercase;
+      font-size:0.66rem;
+    }
+    .sc-qv-specs-table td.v {
+      font-weight:800;
+      color:#0F172A;
+    }
+    .sc-qv-included {
+      background:#F0FDF4;
+      border:1px solid #BBF7D0;
+      border-radius:12px;
+      padding:12px 16px;
+    }
+    .sc-qv-included-title {
+      font-family:'Montserrat', sans-serif;
+      font-size:0.72rem;
+      font-weight:800;
+      color:#166534;
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .sc-qv-included-list {
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:6px;
+      font-family:'Montserrat', sans-serif;
+      font-size:0.72rem;
+      color:#15803D;
+      font-weight:600;
+    }
+    .sc-qv-included-list li {
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .sc-qv-included-list li svg {
+      width:14px;
+      height:14px;
+      stroke:#16A34A;
+      flex-shrink:0;
+    }
+    .sc-qv-actions {
+      display:flex;
+      gap:12px;
+      margin-top:4px;
+    }
+    .sc-qv-cta {
+      flex:1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 22px;
+      background:#16A34A;
+      color:#FFFFFF;
+      border-radius:12px;
+      font-family:'Montserrat', sans-serif;
+      font-size:0.82rem;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 4px 16px rgba(22, 163, 74, 0.3);
+      transition:all .2s ease;
+    }
+    .sc-qv-cta:hover {
+      background:#15803D;
+      transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(22, 163, 74, 0.4);
+      color:#FFFFFF;
+    }
+
+    @media (max-width: 768px) {
+      .sc-qv-grid { grid-template-columns:1fr; gap:18px; }
+      .sc-qv-media { min-height:220px; }
+      .sc-qv-included-list { grid-template-columns:1fr; }
+      .sc-qv-actions { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================= CABEÇALHO OFICIAL TEKMAK ================= -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">
+    <a href="index.html" aria-label="Tekmak do Brasil">
+      <img class="nav-logo" src="assets/logo-tekmak-light.webp" alt="Tekmak do Brasil" />
+    </a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="index.html#quem-somos">Sobre nós</a>
+      <a href="index.html#produtos">Produtos</a>
+      <a href="costura.html" class="is-active">Costura</a>
+      <a href="#assistencia-tecnica">Assistência Técnica</a>
+      <a href="index.html#faq">Dúvidas</a>
+      <a href="index.html#contato">Contato</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://wa.me/5598984287603" target="_blank" rel="noopener noreferrer" class="btn">Falar com Consultor</a>
+      <button class="nav-burger" id="burger" aria-label="Abrir Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Fechar">&times;</button>
+  <a href="index.html">Início</a>
+  <a href="index.html#quem-somos">Sobre nós</a>
+  <a href="index.html#produtos">Produtos</a>
+  <a href="costura.html" class="is-active">Costura</a>
+  <a href="#assistencia-tecnica">Assistência Técnica</a>
+  <a href="index.html#faq">Dúvidas</a>
+  <a href="index.html#contato">Contato</a>
+  <a href="https://wa.me/5598984287603" target="_blank" rel="noopener noreferrer" class="btn" style="background:#FFB800;color:#0A0D12;padding:12px 24px;font-weight:700;">Falar no WhatsApp</a>
+</div>
+
+<!-- ================= SEÇÃO COSTURA INDUSTRIAL SUN SPECIAL ================= -->
+<main class="tek-sewing-page">
+  <div class="tek-shell">
+    <div class="sewing-header">
+      <div class="sewing-kicker">
+        <span class="sewing-kicker-bar"></span>
+        <span class="sewing-kicker-text">TAMBÉM NA TEKMAK</span>
+      </div>
+      <h1 class="sewing-heading">
+        Além das <strong>máquinas industriais Tekmak</strong>,<br />
+        trabalhamos com toda a <span class="sewing-highlight">linha de costura Sun Special.</span>
+      </h1>
+      <p class="sewing-subheading">Encontre a máquina ideal para cada etapa da sua confecção.</p>
+    </div>
+
+    <!-- Abas / Filtros das Máquinas de Costura -->
+    <div class="sewing-tabs" role="tablist" aria-label="Categorias de máquinas de costura Sun Special">
+      <button class="sewing-tab is-selected" type="button" role="tab" aria-selected="true" data-sewing-filter="todos">Todas</button>
+      <button class="sewing-tab" type="button" role="tab" aria-selected="false" data-sewing-filter="retas">Retas</button>
+      <button class="sewing-tab" type="button" role="tab" aria-selected="false" data-sewing-filter="overloques">Overloques</button>
+      <button class="sewing-tab" type="button" role="tab" aria-selected="false" data-sewing-filter="galoneiras">Galoneiras</button>
+      <button class="sewing-tab" type="button" role="tab" aria-selected="false" data-sewing-filter="bordadeiras">Bordadeiras</button>
+    </div>
+
+    <!-- Grid de Máquinas (Exato como no mockup) -->
+    <div class="sewing-grid">
+      <!-- 1: Reta Direct Drive -->
+      <article class="sewing-card" data-sewing-category="retas">
+        <div class="sewing-card-media">
+          <img src="assets/hero-costura/reta-eletronica.webp" alt="Reta Direct Drive Sun Special SS780D4-ST-QI" loading="lazy" decoding="async" />
+        </div>
+        <div class="sewing-card-body">
+          <span class="sewing-card-cat">RETAS</span>
+          <h2 class="sewing-card-title">Reta Direct Drive</h2>
+          <p class="sewing-card-desc">Precisão para o dia a dia.</p>
+          <button type="button" class="sewing-card-link" data-open-quickview="ss780d4" aria-label="Consultar modelo Reta Direct Drive">
+            <span>Consultar modelo</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <!-- 2: Overloque industrial -->
+      <article class="sewing-card" data-sewing-category="overloques">
+        <div class="sewing-card-media">
+          <img src="assets/hero-costura/overloque-frente.webp" alt="Overloque industrial Sun Special SS93D / SS94D" loading="lazy" decoding="async" />
+        </div>
+        <div class="sewing-card-body">
+          <span class="sewing-card-cat">OVERLOQUES</span>
+          <h2 class="sewing-card-title">Overloque industrial</h2>
+          <p class="sewing-card-desc">Acabamento para sua confecção.</p>
+          <button type="button" class="sewing-card-link" data-open-quickview="ss93d" aria-label="Consultar modelo Overloque industrial">
+            <span>Consultar modelo</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <!-- 3: Galoneira eletrônica -->
+      <article class="sewing-card" data-sewing-category="galoneiras">
+        <div class="sewing-card-media">
+          <img src="assets/hero-costura/galoneira-eletronica.webp" alt="Galoneira eletrônica Sun Special SS-500D" loading="lazy" decoding="async" />
+        </div>
+        <div class="sewing-card-body">
+          <span class="sewing-card-cat">GALONEIRAS</span>
+          <h2 class="sewing-card-title">Galoneira eletrônica</h2>
+          <p class="sewing-card-desc">Bainhas com alta qualidade.</p>
+          <button type="button" class="sewing-card-link" data-open-quickview="galoneira" aria-label="Consultar modelo Galoneira eletrônica">
+            <span>Consultar modelo</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <!-- 4: Bordadeira computadorizada -->
+      <article class="sewing-card" data-sewing-category="bordadeiras">
+        <div class="sewing-card-media">
+          <img src="assets/hero-costura/bordadeira.webp" alt="Bordadeira computadorizada Sun Special SS-1201" loading="lazy" decoding="async" />
+        </div>
+        <div class="sewing-card-body">
+          <span class="sewing-card-cat">BORDADEIRAS</span>
+          <h2 class="sewing-card-title">Bordadeira computadorizada</h2>
+          <p class="sewing-card-desc">Bordados e personalização.</p>
+          <button type="button" class="sewing-card-link" data-open-quickview="bordadeira" aria-label="Consultar modelo Bordadeira computadorizada">
+            <span>Consultar modelo</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <!-- Faixa Inferior de Suporte / Especialista -->
+    <div class="sewing-help-bar">
+      <div class="sewing-help-left">
+        <div class="sewing-help-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <div class="sewing-help-divider" aria-hidden="true"></div>
+        <div class="sewing-help-text">
+          <h4>Não sabe qual escolher?</h4>
+          <p>Nossa equipe ajuda você a encontrar a máquina ideal.</p>
+        </div>
+      </div>
+      <a href="https://wa.me/5598984287603?text=Ol%C3%A1!%20Estou%20em%20d%C3%BAvida%20sobre%20qual%20m%C3%A1quina%20de%20costura%20Sun%20Special%20escolher%20para%20minha%20confec%C3%A7%C3%A3o.%20Poderiam%20me%20ajudar%3F" target="_blank" rel="noopener noreferrer" class="sewing-help-btn" aria-label="Falar com especialista no WhatsApp">
+        <span>Falar com especialista</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- ================= ASSISTÊNCIA TÉCNICA (PRESENTE NO MOCKUP) ================= -->
+<section class="tek-assistance" id="assistencia-tecnica" aria-labelledby="assistencia-heading">
+  <div class="tek-shell tek-assistance-grid">
+    <div class="tek-assistance-copy">
+      <span class="tek-kicker">Assistência Técnica</span>
+      <h2 class="tek-heading" id="assistencia-heading"><span>Sua produção</span><strong>não pode parar.</strong></h2>
+      <p class="tek-copy">Na Tekmak do Brasil, a assistência técnica faz parte do nosso compromisso com o cliente. Acompanhamos você da instalação à operação, para ajudar a manter desempenho, produtividade e confiabilidade.</p>
+      <div class="tek-assistance-facts">
+        <div class="tek-assistance-fact">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 28V14l8 5v-6l8 5V7h5v9l5-3v15H3Z"/><path d="M20 7V3h4v4M8 23h2m5 0h2m5 0h2"/></svg>
+          <div><strong>Linhas atendidas</strong><p>Costura industrial, bordado, sublimação, DTF, UV, comunicação visual, prensas, calandras e corte a laser.</p></div>
+        </div>
+        <div class="tek-assistance-fact">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M 16.7 29.8 L 16.3 28.5 L 13.8 27.2 L 16.5 24.4 L 15.0 21.7 L 13.5 21.6 L 13.8 18.8 L 13.3 17.5 L 12.0 17.4 L 11.8 15.7 L 8.8 14.5 L 8.5 12.8 L 6.5 13.8 L 5.1 13.8 L 5.0 12.8 L 3.1 12.6 L 2.6 11.3 L 3.4 9.6 L 5.4 8.9 L 5.8 6.8 L 5.3 5.6 L 5.9 5.4 L 5.4 4.8 L 7.2 4.4 L 7.9 5.4 L 8.7 5.3 L 9.8 4.4 L 8.9 3.0 L 10.1 3.4 L 11.7 2.3 L 12.4 2.9 L 12.2 4.0 L 13.0 5.1 L 14.9 4.7 L 15.0 4.2 L 17.0 4.4 L 18.0 2.8 L 19.1 5.7 L 21.6 6.8 L 21.6 7.4 L 21.7 6.8 L 22.2 7.1 L 22.0 6.7 L 22.9 7.7 L 26.0 8.1 L 27.6 9.4 L 28.9 9.6 L 29.4 11.0 L 29.1 12.4 L 26.6 15.3 L 26.5 18.4 L 25.2 21.5 L 24.5 22.2 L 22.6 21.8 L 22.4 22.8 L 20.6 23.5 L 19.9 26.0 L 16.7 29.8 Z" style="stroke-opacity: 0.45; stroke-width: 1.3; fill: none;" />
+            <path d="M 21.9 16.6 L 21.5 15.1 L 20.5 15.4 L 19.9 15.0 L 19.3 15.2 L 18.6 14.9 L 18.5 14.0 L 19.5 11.9 L 19.6 10.9 L 20.2 10.3 L 20.0 9.7 L 21.0 8.7 L 21.0 9.4 L 22.1 9.4 L 22.1 8.7 L 23.2 8.3 L 23.3 7.6 L 24.5 8.1 L 23.8 8.9 L 23.8 10.7 L 23.2 10.7 L 23.1 14.8 L 23.4 14.9 L 23.5 14.5 L 23.7 15.3 L 23.4 15.9 L 21.9 16.6 Z" style="fill: currentColor; fill-opacity: 0.85; stroke-width: 1.6;" />
+          </svg>
+          <div><strong>Atendimento regional</strong><p>Maranhão, Pará, Piauí e Tocantins, com planejamento conforme a localização e a necessidade de cada cliente.</p></div>
+        </div>
+      </div>
+      <a class="tek-cta" href="https://wa.me/5598984287603?text=Ol%C3%A1%21%20Preciso%20de%20suporte%20t%C3%A9cnico%20para%20meu%20equipamento%20Tekmak." target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6a8 8 0 0 1-11.7 7.1L4 20l1.3-4.1A8 8 0 1 1 20 11.6Z"/><path d="M8.8 8.2c.2-.3.4-.3.7-.3h.3l.6 1.5c.1.2.1.4-.1.6l-.4.5a6 6 0 0 0 2.5 2.5l.5-.4c.2-.2.4-.2.6-.1l1.5.6v.3c0 .3 0 .5-.3.7-.5.2-1.1.3-1.8.1-2.4-.8-4.3-2.7-5.1-5.1-.2-.7-.1-1.3.1-1.8Z"/></svg>
+        <span>Solicitar suporte pelo WhatsApp</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="tek-assistance-orbit" id="assistencia-orbita-root">
+      <ul class="tek-assistance-fallback">
+        <li>Suporte técnico remoto</li>
+        <li>Atendimento técnico presencial</li>
+        <li>Instalação e treinamento</li>
+        <li>Manutenção preventiva</li>
+        <li>Diagnóstico e manutenção corretiva</li>
+        <li>Pós-venda e garantia</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="tek-footer">
+  <div class="tek-shell tek-footer-row">
+    <img class="tek-footer-logo" src="assets/logo-tekmak-light.webp" alt="Tekmak do Brasil" />
+    <nav class="tek-footer-links" aria-label="Navegação do rodapé">
+      <a href="index.html">Início</a>
+      <a href="index.html#quem-somos">Sobre nós</a>
+      <a href="index.html#produtos">Produtos</a>
+      <a href="costura.html">Costura</a>
+      <a href="#assistencia-tecnica">Assistência Técnica</a>
+      <a href="index.html#faq">Dúvidas</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+    <p class="tek-footer-note">Tekmak do Brasil · Máquinas para confecção e comunicação visual.</p>
+  </div>
+</footer>
+
+<!-- Contêineres de suporte para o script de showroom / quickview -->
+<div id="showroomModalCostura" style="display:none;" aria-hidden="true">
+  <div id="scCosturaProductGrid"></div>
+</div>
+
+<div class="sc-quickview-modal" id="scCosturaQuickView" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="sc-quickview-backdrop" id="scQuickViewBackdrop"></div>
+  <div class="sc-quickview-dialog" id="scQuickViewContent">
+    <!-- Preenchido dinamicamente via tekmak-costura-showroom.js -->
+  </div>
+</div>
+
+<!-- ================= SCRIPTS ================= -->
+<script defer src="assets/js/tekmak-costura-showroom.js?v=3"></script>
+<script defer src="assets/orbit-build/assistencia-orbita.js?v=20260927_meio_linha"></script>
+
+<script>
+  // Mobile Menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  }
+  if (mobileClose && mobileMenu) {
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  }
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  }
+
+  // Filtros de Categoria da Seção de Costura
+  (function() {
+    const sewingFilters = document.querySelectorAll('[data-sewing-filter]');
+    const sewingCards = document.querySelectorAll('[data-sewing-category]');
+
+    if (sewingFilters.length && sewingCards.length) {
+      sewingFilters.forEach(filter => filter.addEventListener('click', () => {
+        const category = filter.dataset.sewingFilter;
+        sewingFilters.forEach(button => {
+          const selected = button === filter;
+          button.classList.toggle('is-selected', selected);
+          button.setAttribute('aria-selected', String(selected));
+        });
+        sewingCards.forEach(card => {
+          const cat = card.dataset.sewingCategory;
+          const match = category === 'todos' || cat === category;
+          card.classList.toggle('is-filtered', !match);
+        });
+      }));
+    }
+
+    // Clique no botão "Consultar modelo" -> QuickView
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-open-quickview]');
+      if (btn) {
+        const id = btn.getAttribute('data-open-quickview');
+        if (window.tekmakCosturaShowroom && window.tekmakCosturaShowroom.openQuickView) {
+          window.tekmakCosturaShowroom.openQuickView(id);
+        }
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

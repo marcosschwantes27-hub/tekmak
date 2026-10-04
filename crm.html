@@ -1,0 +1,2603 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TekMak CRM · Central de Atendimento & Vendas</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg" />
+
+  <!-- Google Fonts & Font Preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="assets/fonts/RBNo3.1-UltraItalic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/RBNo3.1-MediumItalic.woff2" as="font" type="font/woff2" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       TEKMAK DO BRASIL · SISTEMA DE DESIGN INDUSTRIAL OFICIAL
+       Paleta: Preto Carbono (#0A0E13), Dourado (#FFB300), Cobalto (#2480DA)
+       ============================================================ */
+
+    @font-face {
+      font-family: 'RBNo3.1';
+      src: url('assets/fonts/RBNo3.1-UltraItalic.woff2') format('woff2');
+      font-weight: 700 900;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'RBNo3.1';
+      src: url('assets/fonts/RBNo3.1-MediumItalic.woff2') format('woff2');
+      font-weight: 400 600;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      /* TekMak Official Palette */
+      --tm-ink: #0a0e13;
+      --tm-bg-deep: #0a0e13;
+      --tm-bg-panel: #0f151d;
+      --tm-bg-surface: #141c26;
+      --tm-bg-card: #182332;
+      --tm-bg-hover: #192432;
+      --tm-bg-active: #1e2d40;
+      --tm-border: #1f2d3d;
+      --tm-border-subtle: #16202c;
+      --tm-border-light: rgba(255, 255, 255, 0.08);
+
+      --tm-text-primary: #f0f4f8;
+      --tm-text-secondary: #8b9bae;
+      --tm-text-muted: #5e6f82;
+
+      /* Industrial Gold */
+      --tm-gold: #ffb300;
+      --tm-gold-hover: #e5a100;
+      --tm-gold-dark: #cc8f00;
+      --tm-gold-wash: rgba(255, 179, 0, 0.12);
+      --tm-gold-border: rgba(255, 179, 0, 0.28);
+      --tm-gold-glow: rgba(255, 179, 0, 0.4);
+
+      /* Industrial Blue & Cyan */
+      --tm-cobalt: #2480da;
+      --tm-cobalt-hover: #1b6ec2;
+      --tm-cyan: #38bdf8;
+      --tm-cyan-wash: rgba(56, 189, 248, 0.14);
+
+      /* Message Bubbles */
+      --tm-bubble-out: #162231;
+      --tm-bubble-out-border: rgba(255, 179, 0, 0.28);
+      --tm-bubble-in: #131b24;
+      --tm-bubble-in-border: #1e2b3a;
+
+      /* Typography */
+      --font-brand: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-condensed: 'Roboto Condensed', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--tm-bg-deep);
+      color: var(--tm-text-primary);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Windows Native Titlebar */
+    .titlebar {
+      height: 34px;
+      background: #0b1016;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px 0 14px;
+      font-size: 12px;
+      color: var(--tm-text-secondary);
+      border-bottom: 1px solid var(--tm-border-subtle);
+      z-index: 100;
+    }
+    .titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-brand);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+    .titlebar-logo-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+    .titlebar-brand-tag {
+      font-size: 9.5px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: var(--tm-gold-wash);
+      color: var(--tm-gold);
+      border: 1px solid var(--tm-gold-border);
+      padding: 1px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .titlebar-center {
+      font-size: 11.5px;
+      color: var(--tm-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+    }
+    .badge-live {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      background: #e81123;
+      transition: all 0.3s;
+    }
+    .badge-live.connected {
+      background: var(--tm-gold);
+      box-shadow: 0 0 8px var(--tm-gold);
+    }
+    .titlebar-controls {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .win-btn {
+      width: 44px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tm-text-secondary);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      font-size: 12px;
+    }
+    .win-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .win-btn.close:hover {
+      background: #e81123;
+      color: #fff;
+    }
+
+    /* Main Container */
+    .app-main {
+      flex: 1;
+      display: flex;
+      height: calc(100vh - 34px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 1. Left Icon Rail (TekMak Side Rail) */
+    .side-rail {
+      width: 58px;
+      background: #0b1016;
+      border-right: 1px solid var(--tm-border-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0 14px;
+      z-index: 20;
+    }
+    .rail-top, .rail-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+    .rail-brand-logo {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .rail-brand-logo:hover {
+      transform: scale(1.08);
+    }
+    .rail-brand-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+    }
+    .rail-btn {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tm-text-secondary);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .rail-btn:hover {
+      background: var(--tm-bg-hover);
+      color: var(--tm-text-primary);
+    }
+    .rail-btn.active {
+      background: var(--tm-bg-surface);
+      color: var(--tm-gold);
+    }
+    .rail-btn.active::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      border-radius: 0 4px 4px 0;
+      background: var(--tm-gold);
+      box-shadow: 0 0 8px var(--tm-gold);
+    }
+    .rail-btn .badge {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      background: var(--tm-gold);
+      color: #0a0e13;
+      font-family: var(--font-brand);
+      font-size: 10px;
+      font-weight: 800;
+      height: 16px;
+      min-width: 16px;
+      padding: 0 4px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+    .tekmak-ai-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, var(--tm-gold), var(--tm-cobalt), #ffb300);
+      padding: 2.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: spinMeta 14s linear infinite;
+    }
+    .tekmak-ai-inner {
+      width: 100%;
+      height: 100%;
+      background: #0b1016;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tm-gold);
+      font-size: 10px;
+      font-weight: 900;
+      font-family: var(--font-brand);
+    }
+    @keyframes spinMeta {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .rail-divider {
+      width: 28px;
+      height: 1px;
+      background: var(--tm-border);
+      margin: 4px 0;
+    }
+    .user-avatar-rail {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1.5px solid var(--tm-gold);
+      background: var(--tm-bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-brand);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--tm-gold);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 179, 0, 0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .user-avatar-rail:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 14px rgba(255, 179, 0, 0.3);
+    }
+
+    /* 2. Conversations Column */
+    .conversations-pane {
+      width: 400px;
+      min-width: 340px;
+      max-width: 480px;
+      background: var(--tm-bg-panel);
+      border-right: 1px solid var(--tm-border);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .conv-header {
+      padding: 14px 18px 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .conv-title-box {
+      display: flex;
+      flex-direction: column;
+    }
+    .conv-title {
+      font-family: var(--font-brand);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--tm-text-primary);
+      letter-spacing: -0.2px;
+    }
+    .conv-subtitle {
+      font-size: 11px;
+      color: var(--tm-text-muted);
+      font-weight: 500;
+      margin-top: 1px;
+    }
+    .conv-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .conv-action-btn {
+      color: var(--tm-text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .conv-action-btn:hover {
+      background: var(--tm-bg-hover);
+      color: var(--tm-gold);
+    }
+
+    /* Search Bar */
+    .search-section {
+      padding: 6px 16px 10px;
+    }
+    .search-box {
+      background: var(--tm-bg-surface);
+      border: 1px solid var(--tm-border);
+      border-radius: 8px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 10px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-box:focus-within {
+      border-color: var(--tm-gold);
+      box-shadow: 0 0 0 2px var(--tm-gold-wash);
+    }
+    .search-box svg {
+      color: var(--tm-text-muted);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--tm-text-primary);
+      font-size: 13.5px;
+      width: 100%;
+      font-family: var(--font-body);
+    }
+    .search-box input::placeholder {
+      color: var(--tm-text-muted);
+      font-size: 13px;
+    }
+
+    /* Filter Chips */
+    .filter-chips {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 16px 12px;
+      overflow-x: auto;
+    }
+    .chip-btn {
+      background: var(--tm-bg-surface);
+      color: var(--tm-text-secondary);
+      border: 1px solid var(--tm-border);
+      border-radius: 14px;
+      padding: 5px 12px;
+      font-family: var(--font-brand);
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .chip-btn:hover {
+      background: var(--tm-bg-hover);
+      color: var(--tm-text-primary);
+      border-color: var(--tm-border-light);
+    }
+    .chip-btn.active {
+      background: var(--tm-gold);
+      color: #0a0e13;
+      font-weight: 700;
+      border-color: var(--tm-gold);
+      box-shadow: 0 2px 8px rgba(255, 179, 0, 0.25);
+    }
+
+    /* Chat List */
+    .chat-list {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--tm-bg-hover) transparent;
+    }
+    .chat-list::-webkit-scrollbar {
+      width: 5px;
+    }
+    .chat-list::-webkit-scrollbar-thumb {
+      background: var(--tm-bg-hover);
+      border-radius: 3px;
+    }
+
+    .chat-item {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 12px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.12s;
+      border-left: 3px solid transparent;
+    }
+    .chat-item:hover {
+      background: var(--tm-bg-hover);
+    }
+    .chat-item.active {
+      background: var(--tm-bg-active);
+      border-left-color: var(--tm-gold);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+    .avatar-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--tm-bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-brand);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--tm-gold);
+      border: 1.5px solid var(--tm-border);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .chat-item:hover .avatar-img {
+      border-color: var(--tm-gold-border);
+    }
+    .chat-item.active .avatar-img {
+      border-color: var(--tm-gold);
+    }
+    .avatar-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chat-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      border-bottom: 1px solid var(--tm-border-subtle);
+      height: 100%;
+      justify-content: center;
+    }
+    .chat-item:hover .chat-info, .chat-item.active .chat-info {
+      border-bottom-color: transparent;
+    }
+    .chat-line1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chat-name {
+      font-family: var(--font-brand);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--tm-text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .chat-time {
+      font-size: 11px;
+      color: var(--tm-text-muted);
+      flex-shrink: 0;
+      margin-left: 6px;
+      font-family: var(--font-condensed);
+    }
+    .chat-time.unread-time {
+      color: var(--tm-gold);
+      font-weight: 700;
+    }
+    .chat-line2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .chat-preview {
+      font-size: 13px;
+      color: var(--tm-text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .unread-pill {
+      background: var(--tm-gold);
+      color: #0a0e13;
+      font-family: var(--font-brand);
+      font-size: 10.5px;
+      font-weight: 800;
+      min-width: 17px;
+      height: 17px;
+      padding: 0 4.5px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+    .group-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--tm-cyan-wash);
+      color: var(--tm-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-size: 10px;
+      font-family: var(--font-brand);
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Empty Chat State */
+    .empty-chat-list {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--tm-text-muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* 3. Main Chat Viewport */
+    .chat-viewport {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: var(--tm-bg-deep);
+      position: relative;
+    }
+
+    /* Welcome / No Chat Selected Splash (TekMak Industrial Hub) */
+    .viewport-splash {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #121922 0%, #0a0e13 100%);
+      border-bottom: 4px solid var(--tm-gold);
+      text-align: center;
+      padding: 30px;
+      position: relative;
+    }
+    .splash-logo-box {
+      margin-bottom: 24px;
+    }
+    .splash-logo-box img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.6));
+    }
+    .splash-badge-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--tm-gold-wash);
+      border: 1px solid var(--tm-gold-border);
+      color: var(--tm-gold);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-family: var(--font-brand);
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .splash-title {
+      font-family: var(--font-brand);
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .splash-desc {
+      font-size: 14px;
+      color: var(--tm-text-secondary);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+    .splash-cta-btn {
+      background: var(--tm-gold);
+      color: #0a0e13;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: var(--font-brand);
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 18px rgba(255, 179, 0, 0.3);
+      transition: all 0.2s;
+    }
+    .splash-cta-btn:hover {
+      background: var(--tm-gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(255, 179, 0, 0.45);
+    }
+    .splash-pillars {
+      display: flex;
+      gap: 16px;
+      margin-top: 36px;
+      max-width: 640px;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .splash-pillar-card {
+      background: var(--tm-bg-surface);
+      border: 1px solid var(--tm-border);
+      border-radius: 10px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--tm-text-secondary);
+    }
+    .splash-pillar-card strong {
+      color: var(--tm-text-primary);
+    }
+    .splash-pillar-card svg {
+      width: 18px;
+      height: 18px;
+      color: var(--tm-gold);
+      flex-shrink: 0;
+    }
+
+    /* Active Chat Header */
+    .viewport-header {
+      height: 62px;
+      background: var(--tm-bg-panel);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--tm-border);
+      z-index: 10;
+    }
+    .header-contact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .header-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--tm-bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-brand);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--tm-gold);
+      border: 1.5px solid var(--tm-border);
+      overflow: hidden;
+    }
+    .header-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .header-name {
+      font-family: var(--font-brand);
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--tm-text-primary);
+    }
+    .header-sub {
+      font-size: 12px;
+      color: var(--tm-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hdr-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tm-text-secondary);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .hdr-btn:hover {
+      background: var(--tm-bg-hover);
+      color: var(--tm-gold);
+    }
+
+    /* Chat Messages Canvas (TekMak Industrial Grid Wallpaper) */
+    .viewport-canvas {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 50px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      background-color: #0a0e13;
+      background-image: 
+        radial-gradient(rgba(255, 179, 0, 0.08) 1px, transparent 1px), 
+        radial-gradient(rgba(36, 128, 218, 0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    .security-notice {
+      align-self: center;
+      background: #121922;
+      border: 1px solid var(--tm-gold-border);
+      color: #e2e8f0;
+      font-size: 11.5px;
+      text-align: center;
+      padding: 6px 16px;
+      border-radius: 6px;
+      max-width: 540px;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      margin-bottom: 8px;
+      z-index: 2;
+    }
+    .security-notice svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      fill: var(--tm-gold);
+    }
+
+    /* Message Bubbles */
+    .msg-row {
+      display: flex;
+      width: 100%;
+      margin-bottom: 3px;
+      z-index: 2;
+    }
+    .msg-row.in {
+      justify-content: flex-start;
+    }
+    .msg-row.out {
+      justify-content: flex-end;
+    }
+
+    .bubble {
+      position: relative;
+      max-width: 620px;
+      border-radius: 8px;
+      padding: 7px 11px 9px 12px;
+      font-size: 14px;
+      line-height: 1.45;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      word-wrap: break-word;
+      user-select: text;
+    }
+    .msg-row.in .bubble {
+      background: var(--tm-bubble-in);
+      color: var(--tm-text-primary);
+      border: 1px solid var(--tm-bubble-in-border);
+      border-top-left-radius: 1px;
+    }
+    .msg-row.out .bubble {
+      background: var(--tm-bubble-out);
+      color: #fff;
+      border: 1px solid var(--tm-bubble-out-border);
+      border-top-right-radius: 1px;
+    }
+
+    .bubble-meta {
+      float: right;
+      margin: 4px 0 -4px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      color: var(--tm-text-muted);
+      user-select: none;
+      font-family: var(--font-condensed);
+    }
+    .msg-row.out .bubble-meta {
+      color: rgba(255, 179, 0, 0.75);
+    }
+    .bubble-meta svg {
+      width: 15px;
+      height: 11px;
+    }
+    .bubble-meta svg.gold {
+      fill: var(--tm-gold);
+    }
+    .msg-sender-name {
+      font-family: var(--font-brand);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tm-cyan);
+      margin-bottom: 4px;
+      line-height: 14px;
+    }
+
+    /* 4. Bottom Message Input Bar */
+    .viewport-input-bar {
+      min-height: 64px;
+      background: var(--tm-bg-panel);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid var(--tm-border);
+      position: relative;
+      z-index: 20;
+    }
+    .input-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tm-text-secondary);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .input-icon-btn:hover {
+      background: var(--tm-bg-hover);
+      color: var(--tm-gold);
+    }
+    .input-wrapper {
+      flex: 1;
+      background: var(--tm-bg-surface);
+      border: 1px solid var(--tm-border);
+      border-radius: 8px;
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .input-wrapper:focus-within {
+      border-color: var(--tm-gold);
+      box-shadow: 0 0 0 2px var(--tm-gold-wash);
+    }
+    .input-wrapper textarea {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--tm-text-primary);
+      font-size: 14.5px;
+      line-height: 20px;
+      width: 100%;
+      resize: none;
+      max-height: 100px;
+      height: 22px;
+      font-family: var(--font-body);
+      user-select: text;
+    }
+    .input-wrapper textarea::placeholder {
+      color: var(--tm-text-muted);
+      font-size: 14px;
+    }
+    .mic-send-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s;
+      color: var(--tm-text-secondary);
+    }
+    .mic-send-btn:hover {
+      background: var(--tm-bg-hover);
+      color: var(--tm-text-primary);
+    }
+    .mic-send-btn.has-text {
+      background: var(--tm-gold);
+      color: #0a0e13;
+      box-shadow: 0 3px 12px var(--tm-gold-glow);
+    }
+    .mic-send-btn.has-text:hover {
+      background: var(--tm-gold-hover);
+      transform: scale(1.05);
+    }
+
+    /* QR Code Overlay Screen (Branded TekMak Hub) */
+    .qr-screen {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, #141c26 0%, #0a0e13 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 500;
+      padding: 24px;
+      overflow-y: auto;
+    }
+    .qr-card {
+      background: var(--tm-bg-panel);
+      border-radius: 16px;
+      padding: 34px 38px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--tm-gold-border);
+      text-align: center;
+      position: relative;
+    }
+    .qr-brand-header {
+      margin-bottom: 16px;
+    }
+    .qr-brand-header img {
+      height: 40px;
+      width: auto;
+    }
+    .qr-title {
+      font-family: var(--font-brand);
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .qr-sub {
+      font-size: 13px;
+      color: var(--tm-text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* Tabs for QR vs Phone Pairing */
+    .connect-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+      width: 100%;
+      background: var(--tm-bg-surface);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--tm-border);
+    }
+    .connect-tab-btn {
+      flex: 1;
+      padding: 8px 12px;
+      font-family: var(--font-brand);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tm-text-secondary);
+      border-radius: 7px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .connect-tab-btn.active {
+      background: var(--tm-gold);
+      color: #0a0e13;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .tab-pane {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* QR Container & Refresh */
+    .qr-box {
+      width: 240px;
+      height: 240px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      border: 3px solid var(--tm-gold);
+      overflow: hidden;
+    }
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .qr-spinner {
+      border: 3px solid rgba(255, 179, 0, 0.2);
+      border-top: 3px solid var(--tm-gold);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .qr-expired-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 14, 19, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      color: #fff;
+      gap: 12px;
+      font-size: 13px;
+    }
+    .qr-refresh-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 260px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: var(--tm-text-secondary);
+    }
+    .qr-refresh-btn {
+      background: var(--tm-bg-surface);
+      border: 1px solid var(--tm-gold-border);
+      color: var(--tm-gold);
+      font-family: var(--font-brand);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .qr-refresh-btn:hover {
+      background: var(--tm-gold-wash);
+      color: #fff;
+    }
+
+    /* Phone Pairing Mode */
+    .phone-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .phone-input-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+    .phone-prefix {
+      background: var(--tm-bg-surface);
+      border: 1px solid var(--tm-border);
+      border-radius: 8px;
+      color: var(--tm-gold);
+      padding: 0 12px;
+      font-family: var(--font-brand);
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+    .phone-text-input {
+      flex: 1;
+      background: var(--tm-bg-surface);
+      border: 1px solid var(--tm-border);
+      border-radius: 8px;
+      color: var(--tm-text-primary);
+      font-size: 14.5px;
+      padding: 10px 14px;
+      outline: none;
+      font-family: var(--font-body);
+      user-select: text;
+      transition: border-color 0.2s;
+    }
+    .phone-text-input:focus {
+      border-color: var(--tm-gold);
+    }
+    .phone-submit-btn {
+      background: var(--tm-gold);
+      color: #0a0e13;
+      font-family: var(--font-brand);
+      font-size: 13.5px;
+      font-weight: 800;
+      padding: 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+    .phone-submit-btn:hover {
+      background: var(--tm-gold-hover);
+      transform: translateY(-1px);
+    }
+    .pairing-code-display {
+      width: 100%;
+      background: #0a0e13;
+      border: 2px dashed var(--tm-gold);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .pairing-code-label {
+      font-size: 11px;
+      color: var(--tm-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-family: var(--font-brand);
+      font-weight: 600;
+    }
+    .pairing-code-text {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--tm-gold);
+      letter-spacing: 5px;
+      user-select: text;
+    }
+    .pairing-code-copy {
+      background: var(--tm-bg-surface);
+      border: 1px solid var(--tm-border);
+      color: var(--tm-text-primary);
+      font-family: var(--font-brand);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .pairing-code-copy:hover {
+      border-color: var(--tm-gold);
+      color: var(--tm-gold);
+    }
+
+    .qr-steps {
+      text-align: left;
+      font-size: 12.5px;
+      color: var(--tm-text-secondary);
+      line-height: 1.7;
+      width: 100%;
+      background: var(--tm-bg-surface);
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--tm-border);
+    }
+    .qr-steps ol {
+      margin-left: 18px;
+    }
+    .qr-steps strong {
+      color: #fff;
+    }
+
+    /* Disconnect / Settings Modal */
+    .menu-popup {
+      position: absolute;
+      top: 54px;
+      right: 18px;
+      background: var(--tm-bg-card);
+      border-radius: 10px;
+      padding: 6px 0;
+      min-width: 220px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--tm-border);
+      display: none;
+      z-index: 1000;
+    }
+    .menu-popup.show {
+      display: block;
+    }
+    .menu-item {
+      padding: 10px 16px;
+      font-size: 13.5px;
+      color: var(--tm-text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.12s, color 0.12s;
+    }
+    .menu-item:hover {
+      background: var(--tm-bg-hover);
+      color: var(--tm-gold);
+    }
+    .menu-item.danger {
+      color: #f15c6d;
+    }
+    .menu-item.danger:hover {
+      background: rgba(241, 92, 109, 0.12);
+      color: #ff6b7d;
+    }
+
+    /* Modals (New Chat, Group Info) */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 14, 19, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 16px;
+    }
+    .modal-card {
+      background: var(--tm-bg-panel);
+      border: 1px solid var(--tm-border);
+      border-radius: 14px;
+      padding: 24px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .modal-header h3 {
+      font-family: var(--font-brand);
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .modal-close {
+      cursor: pointer;
+      color: var(--tm-text-secondary);
+      font-size: 16px;
+      padding: 4px;
+      transition: color 0.15s;
+    }
+    .modal-close:hover {
+      color: var(--tm-gold);
+    }
+    .modal-desc {
+      font-size: 13px;
+      color: var(--tm-text-secondary);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .modal-body label {
+      display: block;
+      font-family: var(--font-brand);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--tm-text-secondary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .modal-input {
+      width: 100%;
+      background: var(--tm-bg-surface);
+      border: 1px solid var(--tm-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--tm-text-primary);
+      font-size: 14px;
+      outline: none;
+      font-family: var(--font-body);
+      box-sizing: border-box;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+    }
+    .modal-input:focus {
+      border-color: var(--tm-gold);
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn-cancel {
+      background: transparent;
+      border: 1px solid var(--tm-border);
+      color: var(--tm-text-secondary);
+      padding: 9px 16px;
+      border-radius: 7px;
+      font-family: var(--font-brand);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-cancel:hover {
+      background: var(--tm-bg-hover);
+      color: var(--tm-text-primary);
+    }
+    .btn-primary {
+      background: var(--tm-gold);
+      border: none;
+      color: #0a0e13;
+      padding: 9px 20px;
+      border-radius: 7px;
+      font-family: var(--font-brand);
+      font-size: 12.5px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(255, 179, 0, 0.25);
+      transition: background 0.15s;
+    }
+    .btn-primary:hover {
+      background: var(--tm-gold-hover);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Windows Top Native Titlebar (TekMak Branded) -->
+  <div class="titlebar">
+    <div class="titlebar-left">
+      <img src="assets/logo-mark.svg" class="titlebar-logo-icon" alt="TekMak" />
+      <span>TEKMAK CRM</span>
+      <span class="titlebar-brand-tag">Omnichannel Hub</span>
+    </div>
+    <div class="titlebar-center">
+      <span class="badge-live" id="liveBadge"></span>
+      <span id="connectionText">Conectando ao WhatsApp Empresarial via Baileys...</span>
+    </div>
+    <div class="titlebar-controls">
+      <div class="win-btn" title="Minimizar">─</div>
+      <div class="win-btn" title="Maximizar">▢</div>
+      <div class="win-btn close" title="Fechar">✕</div>
+    </div>
+  </div>
+
+  <div class="app-main">
+
+    <!-- QR Code / Pairing Overlay Screen -->
+    <div class="qr-screen" id="qrScreen">
+      <div class="qr-card">
+        <div class="qr-brand-header">
+          <img src="assets/logo-white.svg" alt="TekMak do Brasil" />
+        </div>
+        <h2 class="qr-title">Conectar WhatsApp Empresarial</h2>
+        <p class="qr-sub" id="qrSubtitle">Sincronize suas conversas e contatos com o Hub de Vendas TekMak:</p>
+
+        <!-- Method Switcher Tabs -->
+        <div class="connect-tabs">
+          <div class="connect-tab-btn active" id="tabBtnQR" onclick="switchConnectTab('qr')">
+            <span>📷 Escanear QR Code</span>
+          </div>
+          <div class="connect-tab-btn" id="tabBtnPhone" onclick="switchConnectTab('phone')">
+            <span>🔢 Conectar por Número</span>
+          </div>
+        </div>
+
+        <!-- 1. Tab QR Code -->
+        <div class="tab-pane" id="paneQR">
+          <div class="qr-box" id="qrContainer">
+            <div class="qr-spinner"></div>
+          </div>
+
+          <div class="qr-refresh-bar">
+            <span id="qrStatusText">Aguardando código...</span>
+            <button class="qr-refresh-btn" onclick="requestNewQR()">
+              <span>🔄 Novo QR Code</span>
+            </button>
+          </div>
+
+          <div class="qr-steps">
+            <ol>
+              <li>Abra o <strong>WhatsApp</strong> no seu celular</li>
+              <li>Toque em <strong>Mais opções</strong> (Android) ou <strong>Configurações</strong> (iPhone)</li>
+              <li>Toque em <strong>Aparelhos conectados</strong> > <strong>Conectar um aparelho</strong></li>
+              <li>Aponte a câmera para o QR Code acima</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- 2. Tab Phone Pairing Code -->
+        <div class="tab-pane" id="panePhone" style="display:none;">
+          <div class="phone-form" id="phoneForm">
+            <div class="phone-input-row">
+              <span class="phone-prefix">+55</span>
+              <input type="tel" id="phoneNumberInput" class="phone-text-input" placeholder="DDD + Seu Número (ex: 11987654321)" maxlength="15" onkeydown="if(event.key==='Enter') requestPairingCode()" />
+            </div>
+            <button class="phone-submit-btn" id="btnGetPairing" onclick="requestPairingCode()">
+              <span>Receber Código de 8 Dígitos</span>
+            </button>
+          </div>
+
+          <div id="pairingCodeBox" class="pairing-code-display" style="display:none;">
+            <span class="pairing-code-label">Digite este código no seu celular:</span>
+            <span class="pairing-code-text" id="pairingCodeText">---- ----</span>
+            <button class="pairing-code-copy" onclick="copyPairingCode()">
+              <span id="copyCodeText">📋 Copiar Código</span>
+            </button>
+          </div>
+
+          <div class="qr-steps">
+            <ol>
+              <li>Abra o <strong>WhatsApp</strong> no seu celular</li>
+              <li>Toque em <strong>Aparelhos conectados</strong> > <strong>Conectar um aparelho</strong></li>
+              <li>Toque em <strong>Conectar com número de telefone</strong> (embaixo da câmera)</li>
+              <li>Digite o código de 8 dígitos gerado acima</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 1. Left Icon Rail (TekMak Side Rail) -->
+    <div class="side-rail">
+      <div class="rail-top">
+        <!-- Brand Monogram -->
+        <div class="rail-brand-logo" title="TekMak do Brasil · Central">
+          <img src="assets/logo-mark.svg" alt="TekMak" />
+        </div>
+
+        <!-- Chats (Active) -->
+        <div class="rail-btn active" title="Conversas">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+          </svg>
+          <span class="badge" id="totalUnreadBadge" style="display:none;">0</span>
+        </div>
+
+        <!-- Calls / Atendimento -->
+        <div class="rail-btn" title="Chamadas & Ramais">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </div>
+
+        <!-- Catálogo / Produtos TekMak -->
+        <div class="rail-btn" title="Catálogo de Máquinas Industriais" onclick="window.open('/', '_blank')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+
+        <!-- Grupos de Assistência & Vendas -->
+        <div class="rail-btn" title="Grupos de Suporte Técnico & Vendas" onclick="setFilter('groups', document.querySelector('[data-filter=groups]'))">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+
+        <!-- TekMak IA (Assistente Industrial) -->
+        <div class="rail-btn" title="TekMak IA · Assistente Industrial">
+          <div class="tekmak-ai-icon">
+            <div class="tekmak-ai-inner">TM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rail-bottom">
+        <div class="rail-divider"></div>
+
+        <!-- Settings -->
+        <div class="rail-btn" title="Configurações / Desconectar" onclick="toggleSettingsMenu()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </div>
+
+        <!-- User profile avatar -->
+        <div class="user-avatar-rail" id="userAvatarRail" title="Minha Conta">
+          <span id="userInitial">TM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Conversations Column -->
+    <div class="conversations-pane">
+      <div class="conv-header">
+        <div class="conv-title-box">
+          <div class="conv-title">Conversas</div>
+          <div class="conv-subtitle">WhatsApp Empresarial Integrado</div>
+        </div>
+        <div class="conv-actions">
+          <div class="conv-action-btn" title="Nova Conversa / Enviar para Número" onclick="openNewChatModal()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+            </svg>
+          </div>
+          <div class="conv-action-btn" title="Sincronizar Contatos e Grupos" onclick="syncContactsAndAvatars()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+          </div>
+          <div class="conv-action-btn" title="Mais opções" onclick="toggleSettingsMenu()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Box -->
+      <div class="search-section">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Pesquisar cliente, empresa ou grupo" oninput="handleSearch(this.value)" />
+        </div>
+      </div>
+
+      <!-- Filter Chips -->
+      <div class="filter-chips">
+        <button class="chip-btn active" data-filter="all" onclick="setFilter('all', this)">Tudo</button>
+        <button class="chip-btn" data-filter="unread" onclick="setFilter('unread', this)">Não lidas</button>
+        <button class="chip-btn" data-filter="groups" onclick="setFilter('groups', this)">Grupos</button>
+      </div>
+
+      <!-- Real Chat List Container -->
+      <div class="chat-list" id="chatListContainer">
+        <div class="empty-chat-list">Aguardando sincronização de conversas da TekMak...</div>
+      </div>
+    </div>
+
+    <!-- 3. Active Chat Viewport -->
+    <div class="chat-viewport" id="chatViewport">
+
+      <!-- Splash Screen when no chat is open (TekMak Omnichannel Hub) -->
+      <div class="viewport-splash" id="splashScreen">
+        <div class="splash-badge-box">
+          <span>TekMak do Brasil · Suporte & CRM</span>
+        </div>
+        <div class="splash-logo-box">
+          <img src="assets/logo-white.svg" alt="TekMak do Brasil" />
+        </div>
+        <h2 class="splash-title">TekMak Omnichannel Hub</h2>
+        <p class="splash-desc">Central unificada de atendimento, suporte técnico para máquinas industriais e gestão comercial integrada ao WhatsApp.</p>
+        
+        <button class="splash-cta-btn" onclick="openNewChatModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          <span>Iniciar Novo Atendimento</span>
+        </button>
+
+        <div class="splash-pillars">
+          <div class="splash-pillar-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <div><strong>Baileys WhatsApp</strong> · Conexão direta e estável</div>
+          </div>
+          <div class="splash-pillar-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <div><strong>123+ Grupos</strong> · Suporte técnico e revendas</div>
+          </div>
+          <div class="splash-pillar-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div><strong>Segurança Corporativa</strong> · Sessão criptografada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Conversation Content (Initially hidden) -->
+      <div id="activeChatContent" style="display:none; flex-direction:column; height:100%; width:100%;">
+        <div class="viewport-header">
+          <div class="header-contact">
+            <div class="header-avatar" id="activeAvatar">
+              <span id="activeAvatarInitial">?</span>
+            </div>
+            <div class="header-meta">
+              <div class="header-name" id="activeName">Contato</div>
+              <div class="header-sub">
+                <span id="activePhone">online</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="header-actions">
+            <div class="hdr-btn" title="Buscar na conversa">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <div class="hdr-btn" title="Menu" onclick="toggleSettingsMenu()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="viewport-canvas" id="messagesCanvas"></div>
+
+        <div class="viewport-input-bar">
+          <div class="input-icon-btn" title="Emojis" onclick="insertEmoji('👍')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+            </svg>
+          </div>
+
+          <div class="input-wrapper">
+            <textarea id="messageInput" placeholder="Digite uma mensagem ou resposta técnica..." rows="1" oninput="handleTyping(this)" onkeydown="handleKeyDown(event)"></textarea>
+          </div>
+
+          <div class="mic-send-btn" id="sendBtn" title="Gravar mensagem de voz" onclick="handleSendClick()">
+            <svg id="micIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+            </svg>
+            <svg id="sendIcon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div class="menu-popup" id="menuPopup">
+      <div class="menu-item" onclick="openNewChatModal()">💬 Iniciar Nova Conversa</div>
+      <div class="menu-item" onclick="syncContactsAndAvatars()">🔄 Sincronizar Contatos e Fotos</div>
+      <div class="menu-item" onclick="reloadChats()">📑 Recarregar Conversas</div>
+      <div class="menu-item danger" onclick="disconnectWhatsApp()">🚪 Desconectar WhatsApp</div>
+    </div>
+
+    <!-- New Chat Modal -->
+    <div class="modal-overlay" id="newChatModal" style="display:none;" onclick="if(event.target===this) closeNewChatModal()">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Iniciar Nova Conversa</h3>
+          <span class="modal-close" onclick="closeNewChatModal()">✕</span>
+        </div>
+        <p class="modal-desc">Envie uma mensagem para um novo cliente informando o número com DDD:</p>
+        <div class="modal-body">
+          <label>Número do WhatsApp:</label>
+          <input type="tel" id="newChatPhone" class="modal-input" placeholder="ex: 51999998888 ou 11987654321" onkeydown="if(event.key==='Enter') submitNewChat()" />
+          <label>Nome do Contato ou Empresa (opcional):</label>
+          <input type="text" id="newChatName" class="modal-input" placeholder="ex: Marcelo - Confecção ABC" onkeydown="if(event.key==='Enter') submitNewChat()" />
+        </div>
+        <div class="modal-actions">
+          <button class="btn-cancel" onclick="closeNewChatModal()">Cancelar</button>
+          <button class="btn-primary" onclick="submitNewChat()">Abrir Conversa</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group Info Modal -->
+    <div class="modal-overlay" id="groupInfoModal" style="display:none;" onclick="if(event.target===this) closeGroupInfoModal()">
+      <div class="modal-card" style="max-width:480px; max-height:85vh; display:flex; flex-direction:column; padding:0; overflow:hidden;">
+        <div class="modal-header" style="padding:16px 20px; border-bottom:1px solid var(--tm-border);">
+          <h3 id="groupModalHeaderTitle">Dados do Grupo</h3>
+          <span class="modal-close" onclick="closeGroupInfoModal()">✕</span>
+        </div>
+        <div style="overflow-y:auto; padding:20px; flex:1;">
+          <div style="display:flex; flex-direction:column; align-items:center; text-align:center; margin-bottom:18px;">
+            <div id="groupModalAvatar" style="width:74px; height:74px; border-radius:50%; overflow:hidden; background:var(--tm-bg-surface); display:flex; align-items:center; justify-content:center; font-size:30px; margin-bottom:12px; border:2px solid var(--tm-gold); box-shadow: 0 4px 14px rgba(255,179,0,0.2);">
+              👥
+            </div>
+            <div id="groupModalSubject" style="font-family:var(--font-brand); font-size:18px; font-weight:700; color:#fff;">Nome do Grupo</div>
+            <div id="groupModalCount" style="font-size:12.5px; color:var(--tm-text-secondary); margin-top:3px;">Grupo • 0 participantes</div>
+          </div>
+          <div id="groupModalDescBox" style="background:var(--tm-bg-surface); border:1px solid var(--tm-border); border-radius:8px; padding:12px 14px; margin-bottom:16px; display:none;">
+            <div style="font-family:var(--font-brand); font-size:11px; font-weight:700; color:var(--tm-gold); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Descrição</div>
+            <div id="groupModalDesc" style="font-size:13px; color:#d1d7db; white-space:pre-wrap; line-height:1.45;"></div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-brand); font-size:12px; font-weight:700; color:var(--tm-text-secondary); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;">Participantes</div>
+            <div id="groupModalParticipants" style="display:flex; flex-direction:column; gap:6px;">
+              <div style="color:var(--tm-text-muted); font-size:13px; text-align:center; padding:15px 0;">Carregando participantes...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // TekMak Checkmarks (Official Gold)
+    const CHECK_GOLD_SVG = `<svg class="gold" viewBox="0 0 16 11"><path fill="#FFB300" d="M11.07 1.25L5.75 6.57 3.93 4.75a.75.75 0 0 0-1.06 1.06l2.35 2.35a.75.75 0 0 0 1.06 0l5.85-5.85a.75.75 0 1 0-1.06-1.06z"/><path fill="#FFB300" d="M15.07 1.25L9.75 6.57 9 5.82a.75.75 0 1 0-1.06 1.06l1.28 1.28a.75.75 0 0 0 1.06 0l5.85-5.85a.75.75 0 0 0-1.06-1.06z"/></svg>`;
+
+    let ws = null;
+    let chats = [];
+    let currentChatId = null;
+    let activeFilter = 'all';
+    let searchQuery = '';
+    let isConnected = false;
+
+    // Elements
+    const qrScreen = document.getElementById('qrScreen');
+    const qrContainer = document.getElementById('qrContainer');
+    const qrSubtitle = document.getElementById('qrSubtitle');
+    const liveBadge = document.getElementById('liveBadge');
+    const connectionText = document.getElementById('connectionText');
+    const userInitial = document.getElementById('userInitial');
+    const chatListContainer = document.getElementById('chatListContainer');
+    const splashScreen = document.getElementById('splashScreen');
+    const activeChatContent = document.getElementById('activeChatContent');
+    const activeAvatar = document.getElementById('activeAvatar');
+    const activeAvatarInitial = document.getElementById('activeAvatarInitial');
+    const activeName = document.getElementById('activeName');
+    const activePhone = document.getElementById('activePhone');
+    const messagesCanvas = document.getElementById('messagesCanvas');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const micIcon = document.getElementById('micIcon');
+    const sendIcon = document.getElementById('sendIcon');
+    const menuPopup = document.getElementById('menuPopup');
+    const totalUnreadBadge = document.getElementById('totalUnreadBadge');
+
+    // Connect to WebSocket Server
+    function connectWS() {
+      const loc = window.location;
+      const wsProtocol = loc.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${wsProtocol}//${loc.host}/ws`;
+
+      ws = new WebSocket(wsUrl);
+
+      ws.onopen = () => {
+        console.log('[WS] Conectado ao servidor TekMak Omnichannel Hub.');
+      };
+
+      ws.onmessage = (evt) => {
+        try {
+          const data = JSON.parse(evt.data);
+          handleWSMessage(data);
+        } catch (e) {
+          console.error('[WS] Erro ao parsear mensagem:', e);
+        }
+      };
+
+      ws.onclose = () => {
+        console.log('[WS] Conexão encerrada. Reconectando em 2s...');
+        setTimeout(connectWS, 2000);
+      };
+    }
+
+    function handleWSMessage(data) {
+      if (data.type === 'status') {
+        updateStatus(data.status, data.user);
+        if (data.qr) {
+          showQR(data.qr, data.expiresAt);
+        }
+      } else if (data.type === 'qr') {
+        showQR(data.qr, data.expiresAt);
+      } else if (data.type === 'chats_loaded') {
+        chats = data.chats || [];
+        chats.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        renderChatList();
+      } else if (data.type === 'chat_update') {
+        const idx = chats.findIndex(c => c.id === data.chat.id || (c.altId && c.altId === data.chat.id));
+        if (idx >= 0) {
+          chats[idx] = { ...chats[idx], ...data.chat };
+        } else {
+          chats.push(data.chat);
+        }
+        chats.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        renderChatList();
+      } else if (data.type === 'new_message') {
+        const jids = [data.jid, data.rawJid, data.targetJid, data.chat?.id, data.chat?.altId].filter(Boolean);
+        const idx = chats.findIndex(c => jids.includes(c.id) || (c.altId && jids.includes(c.altId)) || (c.phone && data.chat?.phone && c.phone === data.chat.phone));
+        if (idx >= 0) {
+          const updated = data.chat ? { ...chats[idx], ...data.chat } : chats[idx];
+          if (data.message) {
+            updated.lastMessage = data.message.text;
+            updated.time = data.message.time;
+            updated.timestamp = data.message.timestamp || Date.now();
+          }
+          chats[idx] = updated;
+        } else if (data.chat) {
+          chats.push(data.chat);
+        }
+        chats.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        renderChatList();
+
+        // If message is in active chat, append it!
+        if (currentChatId && (jids.includes(currentChatId) || (data.chat && currentChatId === data.chat.id) || (data.chat && currentChatId === data.chat.altId))) {
+          appendMessage(data.message);
+          scrollToBottom();
+        }
+      } else if (data.type === 'messages_loaded') {
+        if (currentChatId === data.jid) {
+          renderMessages(data.messages || []);
+        }
+      }
+    }
+
+    let qrTimerInterval = null;
+    let qrExpireTime = null;
+
+    function switchConnectTab(tab) {
+      const tabBtnQR = document.getElementById('tabBtnQR');
+      const tabBtnPhone = document.getElementById('tabBtnPhone');
+      const paneQR = document.getElementById('paneQR');
+      const panePhone = document.getElementById('panePhone');
+
+      if (tab === 'qr') {
+        tabBtnQR.classList.add('active');
+        tabBtnPhone.classList.remove('active');
+        paneQR.style.display = 'flex';
+        panePhone.style.display = 'none';
+      } else {
+        tabBtnQR.classList.remove('active');
+        tabBtnPhone.classList.add('active');
+        paneQR.style.display = 'none';
+        panePhone.style.display = 'flex';
+        setTimeout(() => document.getElementById('phoneNumberInput').focus(), 100);
+      }
+    }
+
+    function requestNewQR() {
+      const qrStatusText = document.getElementById('qrStatusText');
+      if (qrStatusText) qrStatusText.textContent = 'Gerando novo QR Code TekMak...';
+      qrContainer.innerHTML = '<div class="qr-spinner"></div>';
+      clearInterval(qrTimerInterval);
+
+      fetch('/api/refresh-qr', { method: 'POST' })
+        .then(r => r.json())
+        .catch(err => console.error('Erro ao renovar QR:', err));
+    }
+
+    function requestPairingCode() {
+      const input = document.getElementById('phoneNumberInput');
+      const btn = document.getElementById('btnGetPairing');
+      const pairingBox = document.getElementById('pairingCodeBox');
+      const codeText = document.getElementById('pairingCodeText');
+      const raw = input.value.replace(/\D/g, '');
+
+      if (!raw || raw.length < 10) {
+        alert('Por favor, informe seu número com DDD (ex: 11987654321).');
+        input.focus();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Solicitando código ao WhatsApp...</span>';
+
+      fetch('/api/pairing-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: raw })
+      })
+      .then(r => r.json())
+      .then(res => {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Receber Código de 8 Dígitos</span>';
+
+        if (res.error) {
+          alert('Atenção: ' + res.error);
+          return;
+        }
+
+        if (res.code) {
+          const c = String(res.code).replace(/[^a-zA-Z0-9]/g, '');
+          const formatted = c.length === 8 ? `${c.slice(0, 4)} - ${c.slice(4)}` : c;
+          codeText.textContent = formatted;
+          codeText.dataset.raw = c;
+          pairingBox.style.display = 'flex';
+        }
+      })
+      .catch(err => {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Receber Código de 8 Dígitos</span>';
+        alert('Erro ao conectar com o servidor: ' + err.message);
+      });
+    }
+
+    function copyPairingCode() {
+      const codeText = document.getElementById('pairingCodeText');
+      const raw = codeText.dataset.raw || codeText.textContent.replace(/\s|-/g, '');
+      navigator.clipboard.writeText(raw).then(() => {
+        const span = document.getElementById('copyCodeText');
+        span.textContent = '✅ Código Copiado!';
+        setTimeout(() => { span.textContent = '📋 Copiar Código'; }, 2500);
+      });
+    }
+
+    function updateStatus(status, user) {
+      if (status === 'connected') {
+        isConnected = true;
+        qrScreen.style.display = 'none';
+        liveBadge.className = 'badge-live connected';
+        const nameOrPhone = user?.name || user?.phone || 'Conectado';
+        connectionText.textContent = `Conectado como ${nameOrPhone}`;
+        if (user?.name) {
+          const parts = user.name.split(' ');
+          userInitial.textContent = parts.length > 1 ? (parts[0][0] + parts[1][0]).toUpperCase() : user.name.slice(0, 2).toUpperCase();
+        } else if (user?.phone) {
+          userInitial.textContent = user.phone.slice(-2);
+        }
+        clearInterval(qrTimerInterval);
+      } else if (status === 'qr') {
+        isConnected = false;
+        qrScreen.style.display = 'flex';
+        liveBadge.className = 'badge-live';
+        connectionText.textContent = 'Aguardando pareamento com WhatsApp...';
+      } else if (status === 'connecting') {
+        liveBadge.className = 'badge-live';
+        connectionText.textContent = 'Conectando ao WhatsApp...';
+        const qrStatusText = document.getElementById('qrStatusText');
+        if (qrStatusText) qrStatusText.textContent = 'Iniciando cliente...';
+      } else {
+        isConnected = false;
+        liveBadge.className = 'badge-live';
+        connectionText.textContent = 'Desconectado do WhatsApp';
+        qrScreen.style.display = 'flex';
+      }
+    }
+
+    function showQR(dataUrl, expiresAt) {
+      qrScreen.style.display = 'flex';
+      qrContainer.innerHTML = `<img src="${dataUrl}" alt="WhatsApp QR Code" />`;
+      
+      const qrStatusText = document.getElementById('qrStatusText');
+      clearInterval(qrTimerInterval);
+
+      if (expiresAt) {
+        qrExpireTime = expiresAt;
+        updateQRCountdown();
+        qrTimerInterval = setInterval(updateQRCountdown, 1000);
+      } else {
+        if (qrStatusText) qrStatusText.textContent = 'QR Code ativo';
+      }
+    }
+
+    function updateQRCountdown() {
+      const qrStatusText = document.getElementById('qrStatusText');
+      if (!qrExpireTime || !qrStatusText) return;
+
+      const diffSec = Math.max(0, Math.floor((qrExpireTime - Date.now()) / 1000));
+      if (diffSec > 0) {
+        qrStatusText.textContent = `Válido por ${diffSec}s`;
+      } else {
+        qrStatusText.textContent = 'Código expirado';
+        clearInterval(qrTimerInterval);
+        if (!qrContainer.querySelector('.qr-expired-overlay')) {
+          const overlay = document.createElement('div');
+          overlay.className = 'qr-expired-overlay';
+          overlay.innerHTML = `
+            <span>⚠️ QR Code expirou</span>
+            <button class="phone-submit-btn" style="padding:8px 14px; font-size:12px;" onclick="requestNewQR()">Gerar Novo</button>
+          `;
+          qrContainer.appendChild(overlay);
+        }
+      }
+    }
+
+    function formatDisplayTime(ts) {
+      if (!ts) return '';
+      const date = new Date(typeof ts === 'number' ? (ts > 1e11 ? ts : ts * 1000) : ts);
+      const now = new Date();
+      const isToday = date.toDateString() === now.toDateString();
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+
+      if (isToday) return `${hours}:${minutes}`;
+
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      if (date.toDateString() === yesterday.toDateString()) return 'Ontem';
+
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      return `${day}/${month}`;
+    }
+
+    function renderChatList() {
+      chatListContainer.innerHTML = '';
+
+      // Strictly sort chats by latest message timestamp descending
+      chats.sort((a, b) => {
+        const tsA = a.timestamp || 0;
+        const tsB = b.timestamp || 0;
+        if (tsB !== tsA) return tsB - tsA;
+        return (a.name || '').localeCompare(b.name || '');
+      });
+
+      let totalUnread = 0;
+      const filtered = chats.filter(c => {
+        if (c.unreadCount) totalUnread += c.unreadCount;
+        if (activeFilter === 'unread' && (!c.unreadCount || c.unreadCount === 0)) return false;
+        if (activeFilter === 'groups' && !c.isGroup) return false;
+        if (searchQuery.trim() !== '') {
+          const q = searchQuery.toLowerCase();
+          const matchName = (c.name || '').toLowerCase().includes(q);
+          const matchPhone = (c.phone || '').toLowerCase().includes(q);
+          const matchMsg = (c.lastMessage || '').toLowerCase().includes(q);
+          if (!matchName && !matchPhone && !matchMsg) return false;
+        }
+        return true;
+      });
+
+      if (totalUnread > 0) {
+        totalUnreadBadge.style.display = 'flex';
+        totalUnreadBadge.textContent = totalUnread > 99 ? '99+' : totalUnread;
+      } else {
+        totalUnreadBadge.style.display = 'none';
+      }
+
+      if (filtered.length === 0) {
+        chatListContainer.innerHTML = `<div class="empty-chat-list">Nenhuma conversa encontrada.</div>`;
+        return;
+      }
+
+      filtered.forEach(chat => {
+        const item = document.createElement('div');
+        item.className = `chat-item ${chat.id === currentChatId ? 'active' : ''}`;
+        item.onclick = () => selectChat(chat.id);
+
+        const isGroup = !!chat.isGroup;
+        const dispName = chat.name ? (chat.name.startsWith('55') && !chat.name.includes(' ') && !chat.name.includes('(') ? formatDisplayPhone(chat.name) : chat.name) : (isGroup ? 'Grupo' : formatDisplayPhone(chat.phone));
+        const initial = isGroup ? '👥' : (dispName || chat.phone || '?').trim()[0].toUpperCase();
+        const isUnread = chat.unreadCount && chat.unreadCount > 0;
+        const previewText = chat.lastMessage || (isGroup ? 'Grupo de Atendimento TekMak' : (chat.phone ? formatDisplayPhone(chat.phone) : 'Clique para conversar'));
+        const dispTime = chat.time || (chat.timestamp ? formatDisplayTime(chat.timestamp) : '');
+        const groupBadge = isGroup ? '<span class="group-tag">Grupo</span>' : '';
+
+        item.innerHTML = `
+          <div class="avatar-wrapper">
+            <div class="avatar-img">
+              ${chat.avatar ? `<img src="${chat.avatar}" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><span style="display:none; font-size:${isGroup ? '18px' : '16px'};">${escapeHtml(initial)}</span>` : `<span style="font-size:${isGroup ? '18px' : '16px'};">${escapeHtml(initial)}</span>`}
+            </div>
+          </div>
+          <div class="chat-info">
+            <div class="chat-line1">
+              <span class="chat-name">${escapeHtml(dispName)}${groupBadge}</span>
+              <span class="chat-time ${isUnread ? 'unread-time' : ''}">${dispTime}</span>
+            </div>
+            <div class="chat-line2">
+              <div class="chat-preview">
+                <span>${escapeHtml(previewText)}</span>
+              </div>
+              ${isUnread ? `<span class="unread-pill">${chat.unreadCount}</span>` : ''}
+            </div>
+          </div>
+        `;
+
+        chatListContainer.appendChild(item);
+      });
+    }
+
+    function selectChat(jid) {
+      currentChatId = jid;
+      const chat = chats.find(c => c.id === jid || c.altId === jid);
+      if (!chat) return;
+
+      chat.unreadCount = 0;
+
+      // Show Chat Viewport
+      splashScreen.style.display = 'none';
+      activeChatContent.style.display = 'flex';
+
+      const isGroup = !!chat.isGroup;
+      const dispName = chat.name ? (chat.name.startsWith('55') && !chat.name.includes(' ') && !chat.name.includes('(') ? formatDisplayPhone(chat.name) : chat.name) : (isGroup ? 'Grupo' : formatDisplayPhone(chat.phone));
+
+      // Update Header
+      activeName.textContent = dispName;
+      activePhone.textContent = isGroup
+        ? (chat.participantCount ? `Grupo • ${chat.participantCount} participantes • Clique para ver membros` : 'Grupo • Clique para ver membros')
+        : (chat.phone ? formatDisplayPhone(chat.phone) : 'online');
+
+      const headerContactEl = document.querySelector('.header-contact');
+      if (headerContactEl) {
+        headerContactEl.onclick = () => {
+          if (isGroup) openGroupInfoModal(chat.id);
+        };
+        headerContactEl.style.cursor = isGroup ? 'pointer' : 'default';
+        headerContactEl.title = isGroup ? 'Clique para ver dados do grupo e participantes' : '';
+      }
+
+      const activeAvatarEl = document.getElementById('activeAvatar');
+      if (activeAvatarEl) {
+        if (chat.avatar) {
+          activeAvatarEl.innerHTML = `<img src="${chat.avatar}" alt="" style="width:100%; height:100%; object-fit:cover; border-radius:50%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><span style="display:none; font-size:${isGroup ? '18px' : '15px'};">${isGroup ? '👥' : (dispName || '?').trim()[0].toUpperCase()}</span>`;
+        } else {
+          activeAvatarEl.innerHTML = `<span style="font-size:${isGroup ? '18px' : '15px'};">${isGroup ? '👥' : (dispName || '?').trim()[0].toUpperCase()}</span>`;
+        }
+      }
+
+      // Request messages for this chat
+      messagesCanvas.innerHTML = `<div style="text-align:center; padding:20px; color:var(--tm-text-muted); font-size:13px;">Carregando histórico de mensagens...</div>`;
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ action: 'get_messages', jid }));
+      } else {
+        fetch(`/api/messages?jid=${encodeURIComponent(jid)}`)
+          .then(r => r.json())
+          .then(data => renderMessages(data.messages || []));
+      }
+
+      renderChatList();
+      messageInput.focus();
+    }
+
+    function formatDisplayPhone(phone) {
+      if (!phone) return '';
+      const p = String(phone).replace(/\D/g, '');
+      if (p.startsWith('55')) {
+        const ddd = p.substring(2, 4);
+        const rest = p.substring(4);
+        if (rest.length === 9) {
+          return `+55 (${ddd}) ${rest.substring(0, 5)}-${rest.substring(5)}`;
+        }
+        if (rest.length === 8) {
+          return `+55 (${ddd}) ${rest.substring(0, 4)}-${rest.substring(4)}`;
+        }
+        if (rest.length > 4) {
+          return `+55 (${ddd}) ${rest}`;
+        }
+      }
+      if (p.length > 8) return `+${p}`;
+      return p;
+    }
+
+    function renderMessages(msgs) {
+      messagesCanvas.innerHTML = '';
+
+      // Security notice
+      const sec = document.createElement('div');
+      sec.className = 'security-notice';
+      sec.innerHTML = `
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        <span>Sessão Corporativa Segura TekMak · Criptografia de ponta a ponta</span>
+      `;
+      messagesCanvas.appendChild(sec);
+
+      if (!msgs || msgs.length === 0) {
+        const empty = document.createElement('div');
+        empty.style.cssText = 'text-align:center; padding:50px 20px; color:var(--tm-text-muted); font-size:13px; display:flex; flex-direction:column; align-items:center; gap:8px;';
+        empty.innerHTML = `
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.4" color="var(--tm-gold)">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span style="font-family:var(--font-brand); font-size:14.5px; font-weight:600; color:var(--tm-text-primary);">Nenhuma mensagem nesta conversa ainda.</span>
+          <span style="font-size:12.5px; opacity:0.8;">Digite uma mensagem abaixo para enviar diretamente ao cliente!</span>
+        `;
+        messagesCanvas.appendChild(empty);
+        return;
+      }
+
+      msgs.forEach(m => appendMessage(m));
+      scrollToBottom();
+    }
+
+    function appendMessage(msg) {
+      const row = document.createElement('div');
+      row.className = `msg-row ${msg.sender}`;
+
+      const formatted = escapeHtml(msg.text || '').replace(/\n/g, '<br/>');
+
+      const chat = chats.find(c => c.id === currentChatId || c.altId === currentChatId);
+      const isGroup = chat && chat.isGroup;
+      const showSender = isGroup && msg.sender === 'in' && (msg.senderName || msg.pushName);
+
+      row.innerHTML = `
+        <div class="bubble">
+          ${showSender ? `<div class="msg-sender-name">${escapeHtml(msg.senderName || msg.pushName)}</div>` : ''}
+          ${formatted}
+          <div class="bubble-meta">
+            <span>${msg.time || ''}</span>
+            ${msg.sender === 'out' ? CHECK_GOLD_SVG : ''}
+          </div>
+        </div>
+      `;
+
+      messagesCanvas.appendChild(row);
+    }
+
+    function openGroupInfoModal(jid) {
+      const modal = document.getElementById('groupInfoModal');
+      const chat = chats.find(c => c.id === jid || c.altId === jid);
+      if (!modal || !chat) return;
+
+      const subjectEl = document.getElementById('groupModalSubject');
+      const countEl = document.getElementById('groupModalCount');
+      const descBox = document.getElementById('groupModalDescBox');
+      const descEl = document.getElementById('groupModalDesc');
+      const avatarEl = document.getElementById('groupModalAvatar');
+      const partListEl = document.getElementById('groupModalParticipants');
+
+      subjectEl.textContent = chat.name || 'Grupo';
+      countEl.textContent = chat.participantCount ? `Grupo • ${chat.participantCount} participantes` : 'Grupo';
+
+      if (chat.avatar) {
+        avatarEl.innerHTML = `<img src="${chat.avatar}" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='👥';" />`;
+      } else {
+        avatarEl.innerHTML = '👥';
+      }
+
+      if (chat.description && chat.description.trim()) {
+        descBox.style.display = 'block';
+        descEl.textContent = chat.description;
+      } else {
+        descBox.style.display = 'none';
+      }
+
+      partListEl.innerHTML = '<div style="color:var(--tm-text-muted); font-size:13px; text-align:center; padding:15px 0;">Carregando participantes...</div>';
+      modal.style.display = 'flex';
+
+      fetch(`/api/group-info?jid=${encodeURIComponent(jid)}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.subject) subjectEl.textContent = data.subject;
+          if (data.description) {
+            descBox.style.display = 'block';
+            descEl.textContent = data.description;
+          }
+          if (data.participantCount) {
+            countEl.textContent = `Grupo • ${data.participantCount} participantes`;
+          }
+
+          if (data.participants && data.participants.length > 0) {
+            partListEl.innerHTML = '';
+            data.participants.forEach(p => {
+              const item = document.createElement('div');
+              item.style.cssText = 'display:flex; align-items:center; justify-content:space-between; padding:8px 10px; background:var(--tm-bg-surface); border:1px solid var(--tm-border-subtle); border-radius:6px;';
+              const cleanPhone = (p.phone || '').replace(/\D/g, '');
+              const avatarSrc = cleanPhone ? `/api/avatar?id=${cleanPhone}` : '';
+              const initial = (p.name || p.phone || '?').trim()[0].toUpperCase();
+              item.innerHTML = `
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <div style="width:36px; height:36px; border-radius:50%; background:var(--tm-bg-panel); border:1px solid var(--tm-border); display:flex; align-items:center; justify-content:center; font-family:var(--font-brand); font-weight:700; color:var(--tm-gold); overflow:hidden; font-size:14px;">
+                    ${avatarSrc ? `<img src="${avatarSrc}" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.textContent='${escapeHtml(initial)}';" />` : initial}
+                  </div>
+                  <div>
+                    <div style="font-family:var(--font-brand); font-size:13.5px; font-weight:600; color:var(--tm-text-primary);">${escapeHtml(p.name)}</div>
+                    ${p.phone && p.name !== formatDisplayPhone(p.phone) ? `<div style="font-size:11.5px; color:var(--tm-text-secondary); font-family:var(--font-condensed);">${formatDisplayPhone(p.phone)}</div>` : ''}
+                  </div>
+                </div>
+                ${p.admin ? `<span style="font-family:var(--font-brand); font-size:10.5px; padding:2px 8px; background:var(--tm-gold-wash); color:var(--tm-gold); border:1px solid var(--tm-gold-border); border-radius:4px; font-weight:700; text-transform:uppercase;">${p.admin === 'superadmin' ? 'Criador' : 'Admin'}</span>` : ''}
+              `;
+              partListEl.appendChild(item);
+            });
+          } else {
+            partListEl.innerHTML = '<div style="color:var(--tm-text-muted); font-size:13px; text-align:center; padding:15px 0;">Lista de participantes indisponível.</div>';
+          }
+        })
+        .catch(() => {
+          partListEl.innerHTML = '<div style="color:var(--tm-text-muted); font-size:13px; text-align:center; padding:15px 0;">Não foi possível carregar os participantes.</div>';
+        });
+    }
+
+    function closeGroupInfoModal() {
+      const modal = document.getElementById('groupInfoModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function scrollToBottom() {
+      messagesCanvas.scrollTop = messagesCanvas.scrollHeight;
+    }
+
+    function handleTyping(el) {
+      const val = el.value.trim();
+      if (val.length > 0) {
+        sendBtn.classList.add('has-text');
+        micIcon.style.display = 'none';
+        sendIcon.style.display = 'block';
+        sendBtn.setAttribute('title', 'Enviar mensagem');
+      } else {
+        sendBtn.classList.remove('has-text');
+        micIcon.style.display = 'block';
+        sendIcon.style.display = 'none';
+        sendBtn.setAttribute('title', 'Gravar mensagem de voz');
+      }
+    }
+
+    function handleKeyDown(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    }
+
+    function handleSendClick() {
+      if (messageInput.value.trim().length > 0) {
+        sendMessage();
+      }
+    }
+
+    function sendMessage() {
+      const text = messageInput.value.trim();
+      if (!text || !currentChatId) return;
+
+      // Send via HTTP POST
+      fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jid: currentChatId, text })
+      })
+      .then(r => r.json())
+      .then(res => {
+        if (res.error) {
+          alert('Erro ao enviar mensagem: ' + res.error);
+        }
+      })
+      .catch(err => {
+        console.error('Erro de envio:', err);
+      });
+
+      messageInput.value = '';
+      messageInput.style.height = '22px';
+      handleTyping(messageInput);
+    }
+
+    function setFilter(f, btn) {
+      activeFilter = f;
+      document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderChatList();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val;
+      renderChatList();
+    }
+
+    function insertEmoji(em) {
+      messageInput.value += em;
+      handleTyping(messageInput);
+      messageInput.focus();
+    }
+
+    function toggleSettingsMenu() {
+      menuPopup.classList.toggle('show');
+    }
+
+    function reloadChats() {
+      menuPopup.classList.remove('show');
+      fetch('/api/chats')
+        .then(r => r.json())
+        .then(data => {
+          chats = (data.chats || []).sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+          renderChatList();
+        });
+    }
+
+    function syncContactsAndAvatars() {
+      menuPopup.classList.remove('show');
+      const banner = document.getElementById('connectionText');
+      const original = banner ? banner.textContent : '';
+      if (banner) banner.textContent = '🔄 Sincronizando contatos, grupos e fotos da TekMak...';
+
+      fetch('/api/sync-contacts', { method: 'POST' })
+        .then(r => r.json())
+        .then(res => {
+          if (banner) banner.textContent = `✅ ${res.count || 'Todos'} contatos sincronizados! Baixando fotos...`;
+          setTimeout(() => { if (banner) banner.textContent = original; }, 4000);
+          reloadChats();
+        })
+        .catch(err => {
+          if (banner) banner.textContent = original;
+          alert('Erro ao sincronizar: ' + err.message);
+        });
+    }
+
+    function openNewChatModal() {
+      menuPopup.classList.remove('show');
+      document.getElementById('newChatModal').style.display = 'flex';
+      setTimeout(() => document.getElementById('newChatPhone').focus(), 100);
+    }
+
+    function closeNewChatModal() {
+      document.getElementById('newChatModal').style.display = 'none';
+      document.getElementById('newChatPhone').value = '';
+      document.getElementById('newChatName').value = '';
+    }
+
+    function submitNewChat() {
+      const phoneInput = document.getElementById('newChatPhone');
+      const nameInput = document.getElementById('newChatName');
+      const phone = phoneInput.value.trim();
+      const name = nameInput.value.trim();
+
+      if (!phone || phone.replace(/\D/g, '').length < 10) {
+        alert('Informe um número válido com DDD (ex: 51999998888 ou 11987654321).');
+        phoneInput.focus();
+        return;
+      }
+
+      fetch('/api/new-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, name })
+      })
+      .then(r => r.json())
+      .then(res => {
+        if (res.error) {
+          alert('Erro: ' + res.error);
+          return;
+        }
+        if (res.chat) {
+          const idx = chats.findIndex(c => c.id === res.chat.id);
+          if (idx >= 0) {
+            chats[idx] = res.chat;
+          } else {
+            chats.unshift(res.chat);
+          }
+          closeNewChatModal();
+          renderChatList();
+          selectChat(res.chat.id);
+        }
+      })
+      .catch(err => {
+        alert('Erro ao iniciar conversa: ' + err.message);
+      });
+    }
+
+    function disconnectWhatsApp() {
+      menuPopup.classList.remove('show');
+      if (!confirm('Deseja realmente desconectar esta conta do WhatsApp?')) return;
+      fetch('/api/disconnect', { method: 'POST' })
+        .then(() => {
+          location.reload();
+        });
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Close menu on outside click
+    window.addEventListener('click', e => {
+      if (!menuPopup.contains(e.target) && !e.target.closest('.conv-action-btn') && !e.target.closest('.hdr-btn') && !e.target.closest('[title*="Configurações"]')) {
+        menuPopup.classList.remove('show');
+      }
+    });
+
+    // Detect if page was opened via file:// protocol
+    if (window.location.protocol === 'file:') {
+      const banner = document.createElement('div');
+      banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#d32f2f;color:#fff;padding:12px 20px;text-align:center;font-weight:600;z-index:999999;box-shadow:0 4px 16px rgba(0,0,0,0.6);font-size:14px;';
+      banner.innerHTML = '⚠️ Você abriu o arquivo direto do Windows Explorer (file://)! Para conectar ao WhatsApp, acesse no navegador: <a href="http://localhost:3002/crm" style="color:#fff;text-decoration:underline;margin-left:6px;font-weight:700;">http://localhost:3002/crm</a>';
+      document.body.prepend(banner);
+    }
+
+    // Start
+    connectWS();
+    // Initial fetch
+    fetch('/api/status')
+      .then(r => r.json())
+      .then(d => {
+        updateStatus(d.status, d.user);
+        if (d.qr) showQR(d.qr, d.expiresAt);
+      })
+      .catch(err => console.error('Erro buscando status inicial:', err));
+
+    fetch('/api/chats')
+      .then(r => r.json())
+      .then(d => {
+        chats = (d.chats || []).sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        renderChatList();
+      })
+      .catch(err => console.error('Erro buscando chats iniciais:', err));
+  </script>
+</body>
+</html>

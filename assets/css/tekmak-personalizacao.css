@@ -1,0 +1,19 @@
+.tek-personalization{padding:80px 0;background:radial-gradient(ellipse at 50% 35%,#25262a,#090b0e 70%);border-top:1px solid #ffffff12;border-bottom:1px solid #ffffff12}
+.tek-personalization-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+.tek-personalization-copy .tek-kicker{display:block;color:#fed100;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:18px}
+.tek-personalization-copy h2{font-family:'RBNo3.1','Montserrat',sans-serif;font-size:clamp(36px,4vw,64px);font-weight:900;line-height:1.08;letter-spacing:-.025em;color:#fff;margin:0 0 24px}
+.tek-personalization-copy h2 strong{color:#fed100}
+.tek-personalization-copy p{font-size:18px;line-height:1.65;color:#c3c3c3;margin:0 0 30px;max-width:550px}
+.tek-personalization-cta{display:inline-flex;gap:16px;align-items:center;justify-content:center;padding:15px 28px;min-height:54px;background:#fed100;color:#101111;font-size:17px;font-weight:800;text-decoration:none;border-radius:10px}
+.tek-personalization-cta:hover{background:#ffe445}
+.tek-personalization-cta:focus-visible,.tek-personalization-preview:focus-visible{outline:3px solid #fed100;outline-offset:5px}
+.tek-personalization-preview{display:block;border:1px solid #ffffff20;border-radius:20px;padding:38px 26px 24px;text-decoration:none;background:linear-gradient(145deg,#ffffff08,#ffffff02);color:#c3c3c3;text-align:center;transition:border-color .2s,background .2s,transform .2s}
+.tek-personalization-preview:hover{border-color:#fed10080;background:#ffffff0a;transform:translateY(-3px)}
+.tek-personalization-process{display:grid;grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr) 26px minmax(0,1fr);align-items:center;gap:8px;min-height:210px}
+.tek-personalization-step{display:flex;min-width:0;align-items:center;flex-direction:column;gap:10px}
+.tek-personalization-step-icon{display:grid;width:74px;height:74px;place-items:center;border:1px solid #fed10080;border-radius:22px;background:linear-gradient(145deg,#fed10020,#fed10006);color:#fed100;font-size:21px;font-weight:900;letter-spacing:-.04em}
+.tek-personalization-step strong{color:#fff;font-size:17px;font-weight:800}
+.tek-personalization-step>span:last-child{font-size:12px;line-height:1.4}
+.tek-personalization-arrow{width:20px;height:20px;border-top:2px solid #fed100;border-right:2px solid #fed100;transform:rotate(45deg);opacity:.8}
+.tek-personalization-preview>span{display:block;margin-top:20px;font-size:14px}
+@media(max-width:800px){.tek-personalization{padding:52px 0}.tek-personalization-grid{grid-template-columns:1fr;gap:32px}.tek-personalization-copy h2{font-size:38px}.tek-personalization-copy p{font-size:16px}.tek-personalization-preview{padding:22px 12px 18px}.tek-personalization-process{gap:2px;min-height:180px}.tek-personalization-step-icon{width:58px;height:58px;border-radius:18px}.tek-personalization-step strong{font-size:15px}.tek-personalization-step>span:last-child{font-size:11px}.tek-personalization-arrow{width:13px;height:13px}}

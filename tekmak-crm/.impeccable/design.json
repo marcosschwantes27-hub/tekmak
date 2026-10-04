@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T00:18:58.6759603Z",
+  "title": "Design System: TekMak CRM",
+  "extensions": {
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1250px"
+      },
+      {
+        "name": "overlay-contact",
+        "value": "1060px"
+      },
+      {
+        "name": "mobile",
+        "value": "700px"
+      }
+    ],
+    "shadows": [
+      {
+        "name": "overlay",
+        "value": "-18px 0 60px -25px #000",
+        "purpose": "Separar o painel de configurações do chat."
+      }
+    ],
+    "motion": [
+      {
+        "name": "layout",
+        "value": "grid-template-columns .22s ease",
+        "purpose": "Abertura do painel de contato no desktop."
+      }
+    ]
+  }
+}

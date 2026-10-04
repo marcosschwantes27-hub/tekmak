@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tekmak — Sua ideia. Sua próxima estampa.</title><link rel="icon" type="image/svg+xml" href="../logo-mark.svg?v=20261004_k"><link rel="stylesheet" href="estamparia.css?v=real-dtf-5"></head>
+<body data-stage="preparing"><main>
+<section id="color-stage" class="stage color-stage" aria-labelledby="color-title" hidden>
+<header class="heading color-heading"><a class="brand-return" href="/"><img class="logo simple" src="assets/logo-brasil.png" alt="Tekmak do Brasil"><span>Voltar ao site</span></a><div><p class="eyebrow">03 — ESCOLHA A COR</p><h1 id="color-title">Qual será a cor da camiseta?</h1><p class="subtitle">Sua estampa DTF está pronta. Escolha a camiseta para continuar.</p></div></header>
+<div class="garment-options" role="group" aria-label="Cor da camiseta">
+<button class="garment selected" data-garment="white" aria-pressed="true"><span class="check" aria-hidden="true">✓</span><img src="assets/cor-branca.png" alt="Camiseta branca"><span class="garment-label"><i style="--color:#fafafa"></i>Branco</span></button>
+<button class="garment" data-garment="navy" aria-pressed="false"><span class="check" aria-hidden="true">✓</span><img src="assets/cor-azul.png" alt="Camiseta azul escura"><span class="garment-label"><i style="--color:#202d46"></i>Azul escuro</span></button>
+<button class="garment" data-garment="black" aria-pressed="false"><span class="check" aria-hidden="true">✓</span><img src="assets/cor-preta.png" alt="Camiseta preta"><span class="garment-label"><i style="--color:#101112"></i>Preto</span></button>
+</div><footer class="color-footer"><button id="continue" class="primary">Levar à prensa <span aria-hidden="true">→</span></button></footer></section>
+<section id="draw-stage" class="stage draw-stage" aria-labelledby="draw-title" hidden>
+<header class="heading"><div><p class="eyebrow"><b>02 —</b> CRIE SUA ESTAMPA</p><h1 id="draw-title">Agora, <em>dê vida à</em> sua ideia.</h1><p class="subtitle">Desenhe sua arte. A TK‑3002I imprime em filme DTF.</p></div><a class="brand-return" href="/"><img class="logo brasil" src="assets/logo-brasil.png" alt="Tekmak do Brasil"><span>Voltar ao site</span></a></header>
+<div class="drawing-layout"><div class="paper-column">
+<div class="toolbar" role="group" aria-label="Ferramentas de desenho">
+<button id="brush" class="icon-button active" aria-label="Pincel" aria-pressed="true"><svg viewBox="0 0 32 32"><path d="M12 21 25 4c2-2 5 0 3 3L16 23z" fill="currentColor" stroke="none"/><path d="M14 23c-1 6-5 7-10 5 4-1 1-6 7-7z" fill="currentColor" stroke="none"/></svg></button>
+<button id="eraser" class="icon-button" aria-label="Borracha" aria-pressed="false"><svg viewBox="0 0 32 32"><path d="m6 20 13-14q2-2 4 0l6 6-15 16H9zM12 15l10 9"/></svg></button>
+<button id="undo" class="icon-button" aria-label="Desfazer" disabled><svg viewBox="0 0 32 32"><path d="m12 8-7 7 7 6M5 15h14c11 0 11 13 0 13h-7"/></svg></button>
+<span class="tool-divider"></span><label class="brush-size">Tamanho do pincel<input id="size" type="range" min="2" max="60" value="20" aria-label="Tamanho do pincel"></label><div class="size-dots" aria-hidden="true"><i></i><i></i><i></i></div><button id="clear" class="clear-button" disabled>Limpar</button>
+</div><div class="paper"><canvas id="drawing" width="1440" height="930" aria-label="Papel branco para desenhar sua estampa com mouse, caneta ou dedo"></canvas></div></div>
+<aside class="inks" aria-labelledby="inks-title"><h2 id="inks-title">Suas cores. <em>Nossas tintas.</em></h2><p>Clique no frasco para escolher a cor.</p>
+<div class="bottles" role="group" aria-label="Tintas DTF Tekmak">
+<button class="bottle selected" data-ink="#00aeef" aria-pressed="true"><span class="check" aria-hidden="true">✓</span><img src="assets/tinta-ciano.png" alt="Tinta DTF Tekmak ciano"><span>Ciano</span></button>
+<button class="bottle" data-ink="#ec008c" aria-pressed="false"><span class="check" aria-hidden="true">✓</span><img src="assets/tinta-magenta.png" alt="Tinta DTF Tekmak magenta"><span>Magenta</span></button>
+<button class="bottle" data-ink="#ffe000" aria-pressed="false"><span class="check" aria-hidden="true">✓</span><img src="assets/tinta-amarelo.png" alt="Tinta DTF Tekmak amarelo"><span>Amarelo</span></button>
+<button class="bottle" data-ink="#111111" aria-pressed="false"><span class="check" aria-hidden="true">✓</span><img src="assets/tinta-preto.png" alt="Tinta DTF Tekmak preta"><span>Preto</span></button>
+<button class="bottle white-ink" data-ink="#ffffff" aria-pressed="false"><span class="check" aria-hidden="true">✓</span><span class="white-bottle" aria-hidden="true"></span><span>Branco</span></button>
+</div><label class="mix-color"><svg viewBox="0 0 40 40"><circle cx="20" cy="13" r="10"/><circle cx="13" cy="26" r="10"/><circle cx="27" cy="26" r="10"/></svg><span>Escolher cor</span><input id="custom-ink" type="color" value="#00aeef" aria-label="Escolher cor da tinta"><span aria-hidden="true">›</span></label>
+</aside></div><footer class="draw-footer"><button id="back-color" class="text-button"><span aria-hidden="true">←</span> Voltar</button><button id="retry-load" class="secondary" hidden>Tentar carregar o 3D</button><p id="editor-status" role="status">Desenhe para ver sua estampa na camiseta.</p><button id="print" class="primary" disabled>Imprimir estampa <span aria-hidden="true">→</span></button></footer>
+</section>
+<section id="studio-stage" class="stage studio-stage" aria-labelledby="studio-title">
+<header class="heading"><div><p id="studio-eyebrow" class="eyebrow">01 — PREPARANDO AS TINTAS</p><h1 id="studio-title">Sua ideia começa aqui.</h1><p id="studio-status" class="subtitle" role="status" aria-live="polite">A TK‑3002I prepara tintas CMYK e branco.</p></div><a class="brand-return" href="/"><img class="logo brasil" src="assets/logo-brasil.png" alt="Tekmak do Brasil"><span>Voltar ao site</span></a></header>
+<ol class="cycle-steps" aria-label="Etapas da produção"><li class="active" aria-current="step"><span>01</span> Preparo</li><li><span>02</span> Impressão</li><li><span>03</span> Transferência</li><li><span>04</span> Sua camiseta</li></ol>
+<div id="viewport"><canvas id="scene" tabindex="0" aria-label="Ciclo DTF em 3D: abastecimento, impressão, pó, cura e transferência. Arraste a peça pronta para explorar."></canvas><div id="shot-fade" aria-hidden="true"></div><p id="loading" role="status">Preparando o estúdio 3D…</p></div>
+<footer class="studio-footer">
+<div id="cycle-controls" class="cycle-controls" hidden><button id="cycle-pause" class="cycle-pause" type="button">Pausar</button><input id="cycle-scrubber" type="range" min="0" max="1" step="0.001" value="0" aria-label="Posição na etapa da animação"><span id="cycle-time">00 / 07 s</span></div>
+<button id="begin-drawing" class="primary" hidden>Criar sua estampa <span aria-hidden="true">→</span></button><div id="result-actions" hidden><a id="new" class="secondary" href="./index.html">Nova camisa</a><a class="primary" href="/">Voltar ao site</a></div><button id="replay-stage" class="replay-stage" type="button" hidden>Rever preparo</button><button id="retry" class="secondary" hidden>Tentar carregar novamente</button>
+<p class="cycle-note">Demonstração com tempos condensados. Ajustes térmicos e retirada do filme dependem dos insumos.</p>
+</footer>
+</section></main><script src="vendor/three.min.js"></script><script src="vendor/GLTFLoader.js"></script><script src="estamparia.js?v=real-dtf-5"></script></body></html>

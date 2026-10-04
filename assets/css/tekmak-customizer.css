@@ -1,0 +1,830 @@
+/* ============================================================
+   TEKMAK DO BRASIL — ESTÚDIO "MONTAR SUA PEÇA"
+   Identidade Visual: Amarelo Industrial (#FED100 / #FFB300) + Preto Carbono
+   ============================================================ */
+
+/* Banner de CTA no final do site */
+.tek-customizer-banner {
+  background: radial-gradient(circle at 50% 20%, rgba(254, 209, 0, 0.08) 0%, rgba(10, 14, 19, 0) 70%),
+              linear-gradient(180deg, #0e1217 0%, #080b0e 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.tek-customizer-banner::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: radial-gradient(ellipse at center, rgba(254, 209, 0, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.tek-customizer-banner-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.tek-customizer-banner-content {
+  max-width: 580px;
+}
+
+.tek-customizer-banner-content .tek-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fed100;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+}
+
+.tek-customizer-banner-content .tek-kicker::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fed100;
+  box-shadow: 0 0 10px #fed100;
+}
+
+.tek-customizer-banner-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  font-family: 'RBNo3.1', 'Montserrat', sans-serif;
+}
+
+.tek-customizer-banner-title strong {
+  color: #fed100;
+}
+
+.tek-customizer-banner-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 32px;
+}
+
+.tek-customizer-open-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #fed100;
+  color: #0a0e13;
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 16px 36px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(254, 209, 0, 0.25);
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+.tek-customizer-open-btn:hover {
+  background: #ffe033;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 38px rgba(254, 209, 0, 0.38);
+}
+
+.tek-customizer-open-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.tek-customizer-open-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.tek-customizer-banner-preview {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tek-customizer-banner-preview:hover {
+  transform: scale(1.02);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(254, 209, 0, 0.4);
+}
+
+.tek-customizer-banner-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tek-customizer-banner-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(10, 14, 19, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fed100;
+  border: 1px solid rgba(254, 209, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================================
+   MODAL FULLSCREEN DO ESTÚDIO INTERATIVO
+   ============================================================ */
+.tek-customizer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #080a0d;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.tek-customizer-modal.is-active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Botão Fechar */
+.tek-customizer-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(12px);
+}
+
+.tek-customizer-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fed100;
+  transform: rotate(90deg) scale(1.05);
+  border-color: #fed100;
+}
+
+/* Container do Palco (mantém proporção exata e nitidez) */
+.tek-customizer-stage-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1320px;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.tek-customizer-view {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1024 / 575;
+  max-height: 96vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+}
+
+.tek-customizer-view.is-visible {
+  display: block;
+}
+
+/* ============================================================
+   TELA 1: ESCOLHA DA CAMISA
+   ============================================================ */
+#tekStep1 {
+  aspect-ratio: 1024 / 575;
+}
+
+.tek-s1-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #0b0d10;
+  pointer-events: none;
+}
+
+/* Hotspots interativos sobre as 3 camisas */
+.tek-s1-shirt-hotspots {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.tek-s1-hotspot {
+  position: absolute;
+  top: 22.09%;
+  height: 58.43%;
+  width: 28.42%;
+  border-radius: 14px;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid transparent;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tek-s1-hotspot:hover {
+  border-color: rgba(254, 209, 0, 0.4);
+  box-shadow: 0 0 25px rgba(254, 209, 0, 0.15);
+}
+
+.tek-s1-hotspot:focus-visible {
+  border-color: #fed100;
+  box-shadow: 0 0 0 3px rgba(254, 209, 0, 0.4);
+}
+
+.tek-s1-hotspot[data-shirt="white"] {
+  left: 5.47%;
+}
+
+.tek-s1-hotspot[data-shirt="navy"] {
+  left: 36.52%;
+}
+
+.tek-s1-hotspot[data-shirt="black"] {
+  left: 66.89%;
+}
+
+/* Botão Continuar Tela 1 */
+.tek-s1-continue-btn {
+  position: absolute;
+  left: 76.95%;
+  top: 84.70%;
+  width: 15.53%;
+  height: 8.35%;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  outline: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tek-s1-continue-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(254, 209, 0, 0.5);
+}
+
+.tek-s1-continue-btn:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================
+   TELA 2: DESENHO LIVRE & INSUMOS TEKMAK
+   ============================================================ */
+#tekStep2 {
+  aspect-ratio: 1024 / 682;
+}
+
+.tek-s2-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #0d0f13;
+  pointer-events: none;
+}
+
+/* Papel Canvas Interativo */
+.tek-canvas-container {
+  position: absolute;
+  left: 3.71%;
+  top: 27.86%;
+  width: 62.11%;
+  height: 59.82%;
+  z-index: 10;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+  cursor: crosshair;
+}
+
+.tek-canvas-element {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* Barra de Ferramentas sobreposta à barra original */
+.tek-toolbar-overlay {
+  position: absolute;
+  left: 3.71%;
+  top: 19.35%;
+  width: 62.11%;
+  height: 6.16%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5%;
+  box-sizing: border-box;
+}
+
+.tek-tb-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tek-tb-btn {
+  background: transparent;
+  border: 1.5px solid transparent;
+  color: #ffffff;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.tek-tb-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.tek-tb-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fed100;
+}
+
+.tek-tb-btn.is-active {
+  border-color: #fed100;
+  background: rgba(254, 209, 0, 0.15);
+  color: #fed100;
+}
+
+.tek-tb-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 4px;
+}
+
+.tek-tb-size-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 6px;
+}
+
+.tek-tb-size-label {
+  font-size: 0.75rem;
+  color: #a0a6ad;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Range Slider Personalizado */
+.tek-tb-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 110px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #fed100 0%, #fed100 var(--slider-pct, 30%), rgba(255, 255, 255, 0.2) var(--slider-pct, 30%), rgba(255, 255, 255, 0.2) 100%);
+  outline: none;
+  cursor: pointer;
+}
+
+.tek-tb-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.tek-tb-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.tek-tb-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tek-tb-dot-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.tek-tb-dot-btn span {
+  display: block;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  transition: all 0.2s ease;
+}
+
+.tek-tb-dot-btn:hover span,
+.tek-tb-dot-btn.is-active span {
+  background: #fed100;
+  transform: scale(1.2);
+  box-shadow: 0 0 6px #fed100;
+}
+
+.tek-dot-sm span { width: 5px; height: 5px; }
+.tek-dot-md span { width: 9px; height: 9px; }
+.tek-dot-lg span { width: 15px; height: 15px; }
+
+/* Botões dos 4 Frascos de Tintas Tekmak */
+.tek-bottle-slot {
+  position: absolute;
+  width: 13.09%;
+  height: 25.66%;
+  z-index: 20;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
+  transition: transform 0.2s ease;
+}
+
+.tek-bottle-slot:hover {
+  transform: scale(1.02);
+}
+
+.tek-bottle-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+  border-radius: 8px;
+}
+
+.tek-bottle-slot[data-ink="ciano"] {
+  left: 69.92%;
+  top: 26.10%;
+}
+
+.tek-bottle-slot[data-ink="magenta"] {
+  left: 83.98%;
+  top: 26.10%;
+}
+
+.tek-bottle-slot[data-ink="amarelo"] {
+  left: 69.92%;
+  top: 53.08%;
+}
+
+.tek-bottle-slot[data-ink="preto"] {
+  left: 83.98%;
+  top: 53.08%;
+}
+
+/* Botão Misturar Cores */
+.tek-mix-colors-btn {
+  position: absolute;
+  left: 69.92%;
+  top: 80.65%;
+  width: 27.15%;
+  height: 6.59%;
+  z-index: 20;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  transition: background 0.2s ease;
+}
+
+.tek-mix-colors-btn:hover {
+  background: rgba(254, 209, 0, 0.12);
+}
+
+/* Input Color Oculto mas ativável */
+#tekNativeColorPicker {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* Botões do Rodapé Tela 2 */
+.tek-s2-back-btn {
+  position: absolute;
+  left: 3.71%;
+  top: 92.08%;
+  width: 10%;
+  height: 5%;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s ease;
+}
+
+.tek-s2-back-btn:hover {
+  transform: translateX(-3px);
+}
+
+.tek-s2-view-shirt-btn {
+  position: absolute;
+  left: 76.56%;
+  top: 90.76%;
+  width: 18.5%;
+  height: 6.16%;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 999px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tek-s2-view-shirt-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(254, 209, 0, 0.5);
+}
+
+/* ============================================================
+   TELA 3: VISUALIZAÇÃO REAL NA CAMISETA
+   ============================================================ */
+#tekStep3 {
+  aspect-ratio: 1024 / 682;
+  background: radial-gradient(circle at 50% 60%, #1a1e24 0%, #0c0e12 80%);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 48px;
+  box-sizing: border-box;
+}
+
+.tek-s3-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tek-s3-kicker {
+  font-size: 0.8rem;
+  color: #fed100;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.tek-s3-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: 'RBNo3.1', 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+.tek-s3-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 4px;
+}
+
+.tek-s3-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  flex: 1;
+}
+
+/* Mockup da Camisa com Estampa */
+.tek-s3-mockup-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  aspect-ratio: 260 / 287;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #090b0e;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.tek-s3-shirt-base {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tek-s3-print-overlay {
+  position: absolute;
+  left: 27%;
+  top: 27%;
+  width: 46%;
+  height: 44%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tek-s3-print-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+}
+
+.tek-s3-mockup-wrap.is-white .tek-s3-print-overlay img {
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+}
+
+.tek-s3-mockup-wrap.is-navy .tek-s3-print-overlay img,
+.tek-s3-mockup-wrap.is-black .tek-s3-print-overlay img {
+  mix-blend-mode: normal;
+  opacity: 0.95;
+}
+
+/* Painel de Ações Tela 3 */
+.tek-s3-actions-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.tek-s3-info-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 22px;
+}
+
+.tek-s3-info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.tek-s3-info-row:last-child {
+  margin-bottom: 0;
+}
+
+.tek-s3-info-row span:first-child {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.tek-s3-info-row span:last-child {
+  color: #fed100;
+  font-weight: 700;
+}
+
+.tek-s3-cta-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #fed100;
+  color: #0a0e13;
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 16px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(254, 209, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.tek-s3-cta-whatsapp:hover {
+  background: #ffe033;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(254, 209, 0, 0.45);
+}
+
+.tek-s3-btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tek-s3-btn-download:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #fed100;
+  color: #fed100;
+}
+
+.tek-s3-btn-back-draw {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+}
+
+.tek-s3-btn-back-draw:hover {
+  color: #ffffff;
+}
+
+/* ============================================================
+   RESPONSIVIDADE (Tablets e Smartphones)
+   ============================================================ */
+@media (max-width: 900px) {
+  .tek-customizer-banner-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .tek-customizer-banner-content {
+    margin: 0 auto;
+  }
+  .tek-customizer-stage-wrapper {
+    padding: 6px;
+  }
+  .tek-customizer-view {
+    border-radius: 8px;
+  }
+  .tek-s3-body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .tek-s3-mockup-wrap {
+    max-width: 280px;
+  }
+}
